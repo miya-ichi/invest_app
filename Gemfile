@@ -84,3 +84,4 @@ group :test do
 end
 
 gem 'sorcery'
+gem 'rails-i18n'
