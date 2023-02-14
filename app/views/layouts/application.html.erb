@@ -11,6 +11,21 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="app-title navbar navbar-expand-md navbar-light bg-light mb-3">
+      <div class="container-fluid">
+        <div class="navbar-brand">Invest APP</div>
+        <ul class="navbar-nav ml-auto">
+          <li>MENU</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <% if flash.notice.present? %>
+        <div class="alert alert-success">
+          <%= flash.notice %>
+        </div>
+      <% end%>
+      <%= yield %>
+    </div>
   </body>
 </html>
