@@ -15,7 +15,11 @@
       <div class="container-fluid">
         <div class="navbar-brand">Invest APP</div>
         <ul class="navbar-nav ml-auto">
-          <li>MENU</li>
+          <% if current_user %>
+            <li><%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: 'nav-link' %></li>
+          <% else %>
+            <li><%= link_to 'ログイン', login_path, class: 'nav-link' %></li>
+          <% end %>
         </ul>
       </div>
     </div>
