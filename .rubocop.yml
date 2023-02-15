@@ -51,3 +51,6 @@ Layout/LineLength:
 Metrics/MethodLength:
   CountComments: false
   Max: 30
+
+RSpec/Rails/InferredSpecType:
+  Enabled: false

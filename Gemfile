@@ -74,6 +74,7 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'erb_lint', require: false
+  gem 'annotate'
 end
 
 group :test do
@@ -81,3 +82,6 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+gem 'sorcery'
+gem 'rails-i18n'

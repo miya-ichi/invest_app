@@ -11,6 +11,23 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="app-title navbar navbar-expand-md navbar-light bg-light mb-3">
+      <div class="container-fluid">
+        <div class="navbar-brand">Invest APP</div>
+        <ul class="navbar-nav ml-auto">
+          <% if current_user %>
+            <li><%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: 'nav-link' %></li>
+          <% else %>
+            <li><%= link_to 'ログイン', login_path, class: 'nav-link' %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <%= content_tag :div, message, class: "alert alert-#{message_type}" %>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>
