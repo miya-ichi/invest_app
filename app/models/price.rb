@@ -1,5 +1,8 @@
 class Price < ApplicationRecord
   belongs_to :stock
+
+  validates :date, presence: true, uniqueness: true
+  validates :market_close, presence: true
 end
 
 # == Schema Information
