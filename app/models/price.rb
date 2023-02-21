@@ -1,7 +1,7 @@
 class Price < ApplicationRecord
   belongs_to :stock
 
-  validates :date, presence: true, uniqueness: true
+  validates :date, presence: true, uniqueness: { scope: :stock_id }
   validates :market_close, presence: true
 end
 
@@ -21,8 +21,7 @@ end
 #
 # Indexes
 #
-#  index_prices_on_date      (date) UNIQUE
-#  index_prices_on_stock_id  (stock_id)
+#  index_prices_on_stock_id_and_date  (stock_id,date) UNIQUE
 #
 # Foreign Keys
 #

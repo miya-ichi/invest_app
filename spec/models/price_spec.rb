@@ -39,8 +39,7 @@ end
 #
 # Indexes
 #
-#  index_prices_on_date      (date) UNIQUE
-#  index_prices_on_stock_id  (stock_id)
+#  index_prices_on_stock_id_and_date  (stock_id,date) UNIQUE
 #
 # Foreign Keys
 #

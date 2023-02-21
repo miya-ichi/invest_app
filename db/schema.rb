@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_21_072542) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_21_145215) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,8 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_21_072542) do
     t.float "market_close", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["date"], name: "index_prices_on_date", unique: true
-    t.index ["stock_id"], name: "index_prices_on_stock_id"
+    t.index ["stock_id", "date"], name: "index_prices_on_stock_id_and_date", unique: true
   end
 
   create_table "stocks", force: :cascade do |t|
