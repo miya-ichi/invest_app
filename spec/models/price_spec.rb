@@ -9,10 +9,10 @@ RSpec.describe Price, type: :model do
     end
 
     it '日付は一意であること' do
-      create(:price, date: Time.zone.today)
-      price = build(:price, date: Time.zone.today)
-      price.valid?
-      expect(price.errors[:date]).to include('はすでに存在します')
+      price_a = create(:price, date: Time.zone.today)
+      price_b = build(:price, stock_id: price_a.stock_id, date: Time.zone.today)
+      price_b.valid?
+      expect(price_b.errors[:date]).to include('はすでに存在します')
     end
 
     it '終値は必須であること' do
