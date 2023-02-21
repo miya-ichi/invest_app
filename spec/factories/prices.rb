@@ -4,7 +4,7 @@ FactoryBot.define do
     date { Time.zone.today }
     market_open { 1.5 }
     daily_high { 1.5 }
-    daily_row { 1.5 }
+    daily_low { 1.5 }
     market_close { 1.5 }
   end
 end
@@ -15,7 +15,7 @@ end
 #
 #  id           :bigint           not null, primary key
 #  daily_high   :float
-#  daily_row    :float
+#  daily_low    :float
 #  date         :date             not null
 #  market_close :float            not null
 #  market_open  :float

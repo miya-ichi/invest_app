@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_20_084044) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_21_072542) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_084044) do
     t.date "date", null: false
     t.float "market_open"
     t.float "daily_high"
-    t.float "daily_row"
+    t.float "daily_low"
     t.float "market_close", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

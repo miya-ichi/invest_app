@@ -29,7 +29,7 @@ end
 #
 #  id           :bigint           not null, primary key
 #  daily_high   :float
-#  daily_row    :float
+#  daily_low    :float
 #  date         :date             not null
 #  market_close :float            not null
 #  market_open  :float
