@@ -7,10 +7,10 @@ class Stock < ApplicationRecord
 
   def set_prices
     symbol = self.code
-    symbol += '.T' if self.category == 0 #日本株の場合、証券コードの末尾に.Tをつける
+    symbol += '.T' if self.category.zero? # 日本株の場合、証券コードの末尾に.Tをつける
     query = BasicYahooFinance::Query.new
     data = query.quotes(symbol)
-    
+
     prices.create(
       date: Time.zone.today,
       market_open: data[symbol]['regularMarketOpen'],
@@ -22,10 +22,10 @@ class Stock < ApplicationRecord
 
   def update_prices
     symbol = self.code
-    symbol += '.T' if self.category == 0 #日本株の場合、証券コードの末尾に.Tをつける
+    symbol += '.T' if self.category.zero? # 日本株の場合、証券コードの末尾に.Tをつける
     query = BasicYahooFinance::Query.new
     data = query.quotes(symbol)
-    
+
     prices.update(market_close: data[symbol]['regularMarketDayHigh'])
   end
 end
