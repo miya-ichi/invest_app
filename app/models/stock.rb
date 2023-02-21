@@ -4,6 +4,30 @@ class Stock < ApplicationRecord
   validates :category, presence: true
   validates :code, presence: true, uniqueness: true
   validates :name, presence: true
+
+  def set_prices
+    symbol = self.code
+    symbol += '.T' if self.category == 0 #日本株の場合、証券コードの末尾に.Tをつける
+    query = BasicYahooFinance::Query.new
+    data = query.quotes(symbol)
+    
+    prices.create(
+      date: Time.zone.today,
+      market_open: data[symbol]['regularMarketOpen'],
+      daily_high: data[symbol]['regularMarketDayHigh'],
+      daily_low: data[symbol]['regularMarketDayLow'],
+      market_close: data[symbol]['regularMarketDayHigh']
+    )
+  end
+
+  def update_prices
+    symbol = self.code
+    symbol += '.T' if self.category == 0 #日本株の場合、証券コードの末尾に.Tをつける
+    query = BasicYahooFinance::Query.new
+    data = query.quotes(symbol)
+    
+    prices.update(market_close: data[symbol]['regularMarketDayHigh'])
+  end
 end
 
 # == Schema Information
