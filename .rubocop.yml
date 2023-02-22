@@ -54,3 +54,11 @@ Metrics/MethodLength:
 
 RSpec/Rails/InferredSpecType:
   Enabled: false
+
+# 特に model 内において、ローカル変数とメソッド呼び出しの区別をつけた方が分かりやすい場合が多い
+Style/RedundantSelf:
+  Enabled: false
+
+# 使用しているAPIの使用的に厳しい気がするので少し緩める
+Metrics/AbcSize:
+  Max: 18
