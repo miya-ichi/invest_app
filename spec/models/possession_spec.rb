@@ -1,7 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Possession, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'バリデーション' do
+    it '数量は必須であること' do
+      possession = build(:possession, volume: nil)
+      possession.valid?
+      expect(possession.errors[:volume]).to include('を入力してください')
+    end
+
+    it '価格は必須であること' do
+      possession = build(:possession, price: nil)
+      possession.valid?
+      expect(possession.errors[:price]).to include('を入力してください')
+    end
+  end
 end
 
 # == Schema Information
