@@ -4,6 +4,7 @@ FactoryBot.define do
     stock
     volume { rand(1..10) }
     price { rand(1..100) }
+    memo { 'text' }
   end
 end
 
@@ -12,6 +13,7 @@ end
 # Table name: possessions
 #
 #  id         :bigint           not null, primary key
+#  memo       :string
 #  price      :float            not null
 #  volume     :integer          not null
 #  created_at :datetime         not null

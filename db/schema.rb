@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_22_034422) do
     t.bigint "stock_id", null: false
     t.integer "volume", null: false
     t.float "price", null: false
+    t.string "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["stock_id"], name: "index_possessions_on_stock_id"
