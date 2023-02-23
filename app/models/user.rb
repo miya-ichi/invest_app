@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :possessions, dependent: :destroy
+
   authenticates_with_sorcery!
 
   validates :username, presence: true, uniqueness: true
