@@ -1,6 +1,9 @@
 class Possession < ApplicationRecord
   belongs_to :user
   belongs_to :stock
+
+  validates :volume, presence: true
+  validates :price, presence: true
 end
 
 # == Schema Information
@@ -8,6 +11,7 @@ end
 # Table name: possessions
 #
 #  id         :bigint           not null, primary key
+#  memo       :string
 #  price      :float            not null
 #  volume     :integer          not null
 #  created_at :datetime         not null
