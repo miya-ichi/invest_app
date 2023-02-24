@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :possessions, dependent: :destroy
+  has_many :stocks, through: :possessions
 
   authenticates_with_sorcery!
 
