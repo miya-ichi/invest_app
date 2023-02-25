@@ -2,8 +2,10 @@ class Possession < ApplicationRecord
   belongs_to :user
   belongs_to :stock
 
-  validates :volume, presence: true
-  validates :price, presence: true
+  validates :stock_id, presence: true
+  validates :volume, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :price, presence: true, numericality: { greater_than: 0 }
+  validates :memo, length: { maximum: 50 }
 end
 
 # == Schema Information
