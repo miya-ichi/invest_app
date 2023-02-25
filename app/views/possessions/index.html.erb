@@ -1,2 +1,15 @@
-<h1>Possessions#index</h1>
-<p>Find me in app/views/possessions/index.html.erb</p>
+<h1>保有銘柄一覧</h1>
+
+<%= link_to '＋新規登録', new_possession_path, data: { turbo_frame: 'new_possession' }, class: 'btn btn-primary' %>
+
+<div class="card shadow mt-3">
+  <div class="card-header">
+    <p>保有銘柄の明細</p>
+  </div>
+
+  <div class="card-body">
+    <%= turbo_frame_tag 'new_possession' %>
+    <div id="possessions">
+    </div>
+  </div>
+</div>
