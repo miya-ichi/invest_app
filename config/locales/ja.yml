@@ -19,3 +19,7 @@ ja:
         price: 購入価格
         volume: 数量
         memo: メモ
+      price:
+        market_close: 現在価格
+      stock:
+        category: 分類

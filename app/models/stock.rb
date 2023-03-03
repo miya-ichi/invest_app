@@ -29,6 +29,23 @@ class Stock < ApplicationRecord
 
     prices.update(market_close: data[symbol]['regularMarketDayHigh'])
   end
+
+  def print_stock_prices_and_changes
+    today = self.prices[-1].market_close
+
+    if self.prices.size >= 2
+      yesterday = self.prices[-2].market_close
+      change = "#{'+' if today > yesterday}#{((today - yesterday) / today * 100).round(2)}%"
+    else
+      change = 'NoDATA'
+    end
+
+    "#{today.to_fs(:delimited)}#{self.japanese? ? '円' : '＄'} (#{change})"
+  end
+
+  def japanese?
+    self.category.zero?
+  end
 end
 
 # == Schema Information

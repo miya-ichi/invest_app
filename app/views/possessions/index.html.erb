@@ -4,12 +4,21 @@
 
 <div class="card shadow mt-3">
   <div class="card-header">
-    <p>保有銘柄の明細</p>
+    <div class="row">
+      <div class="col-1"><%= Stock.human_attribute_name(:category) %></div>
+      <div class="col-3"><%= Possession.human_attribute_name(:stock_id) %></div>
+      <div class="col-1"><%= Possession.human_attribute_name(:volume) %></div>
+      <div class="col-1"><%= Possession.human_attribute_name(:price) %></div>
+      <div class="col-2"><%= "#{Price.human_attribute_name(:market_close)}(前日比)" %></div>
+      <div class="col-2">評価額(騰落率)</div>
+      <div class="col-2"></div>
+    </div>
   </div>
 
   <div class="card-body">
     <%= turbo_frame_tag 'new_possession' %>
     <div id="possessions">
+      <%= render @possessions %>
     </div>
   </div>
 </div>
