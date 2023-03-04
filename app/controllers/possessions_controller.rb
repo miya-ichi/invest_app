@@ -7,6 +7,10 @@ class PossessionsController < ApplicationController
     @possession = current_user.possessions.build
   end
 
+  def edit
+    @possession = current_user.possessions.find(params[:id])
+  end
+
   def create
     @possession = current_user.possessions.build(possession_params)
 
@@ -15,6 +19,16 @@ class PossessionsController < ApplicationController
       flash.now[:success] = "「#{@possession.stock.name}」を保有銘柄に追加しました。"
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @possession = current_user.possessions.find(params[:id])
+
+    if @possession.update(possession_params)
+      flash.now[:success] = "保有銘柄「#{@possession.stock.name}」を更新しました。"
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 

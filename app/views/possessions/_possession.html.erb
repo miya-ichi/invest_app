@@ -1,30 +1,32 @@
-<div class="border-bottom">
-  <div class="row align-items-center p-2">
-    <div class="col-1">
-      <%= possession.stock.category.zero? ? '日本' : '米国' %>
-    </div>
-    <div class="col-3">
-      <%= possession.stock.name %>
-    </div>
-    <div class="col-1 d-flex justify-content-end">
-      <%= possession.volume %>
-    </div>
-    <div class="col-1 d-flex justify-content-end">
-      <%= "#{possession.price}#{possession.stock.japanese? ? '円' : '＄'}" %>
-    </div>
-    <div class="col-2 d-flex justify-content-end">
-      <%= possession.stock.print_stock_prices_and_changes %>
-    </div>
-    <div class="col-2 d-flex justify-content-end">
-      <%= possession.print_stock_totals_and_changes %>
-    </div>
-    <div class="col-2">
-      <%= link_to '編集', '#', class: 'btn btn-sm btn-primary me-3' %>
-      <%= link_to '削除', '#', class: 'btn btn-sm btn-danger' %>
-    </div>
-    <div class="row p-2">
-      <div class="col-1"></div>
-      <div class="col-11">メモ: <%= possession.memo %></div>
+<%= turbo_frame_tag possession do %>
+  <div class="border-bottom">
+    <div class="row align-items-center p-2">
+      <div class="col-1">
+        <%= possession.stock.category.zero? ? '日本' : '米国' %>
+      </div>
+      <div class="col-3">
+        <%= possession.stock.name %>
+      </div>
+      <div class="col-1 d-flex justify-content-end">
+        <%= possession.volume %>
+      </div>
+      <div class="col-1 d-flex justify-content-end">
+        <%= "#{possession.price}#{possession.stock.japanese? ? '円' : '＄'}" %>
+      </div>
+      <div class="col-2 d-flex justify-content-end">
+        <%= possession.stock.print_stock_prices_and_changes %>
+      </div>
+      <div class="col-2 d-flex justify-content-end">
+        <%= possession.print_stock_totals_and_changes %>
+      </div>
+      <div class="col-2">
+        <%= link_to '編集', edit_possession_path(possession), class: 'btn btn-sm btn-primary me-3' %>
+        <%= link_to '削除', '#', class: 'btn btn-sm btn-danger' %>
+      </div>
+      <div class="row p-2">
+        <div class="col-1"></div>
+        <div class="col-9">メモ: <%= possession.memo %></div>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
