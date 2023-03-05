@@ -32,6 +32,13 @@ class PossessionsController < ApplicationController
     end
   end
 
+  def destroy
+    @possession = current_user.possessions.find(params[:id])
+
+    @possession.destroy!
+    flash.now[:success] = "保有銘柄「#{@possession.stock.name}」を削除しました。"
+  end
+
   private
 
   def possession_params
