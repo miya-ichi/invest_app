@@ -7,12 +7,27 @@ class Possession < ApplicationRecord
   validates :price, presence: true, numericality: { greater_than: 0 }
   validates :memo, length: { maximum: 50 }
 
-  def print_stock_totals_and_changes
-    today = self.stock.prices[-1].market_close * self.volume
-    buy = self.price * self.volume
-    change = "#{'+' if today > buy}#{((today - buy) / buy * 100).round(2)}%"
+  def today_price
+    self.stock.prices[-1].market_close
+  end
 
-    "#{today.to_fs(:delimited)}#{self.stock.japanese? ? '円' : '＄'}(#{change})"
+  def price_difference
+    if self.stock.prices.size >= 2
+      today = self.stock.prices[-1].market_close
+      yesterday = self.stock.prices[-2].market_close
+
+      ((today / yesterday) - 1) * 100
+    else
+      0
+    end
+  end
+
+  def total_price
+    today_price * self.volume
+  end
+
+  def total_change
+    ((today_price / self.price) - 1) * 100
   end
 
   private

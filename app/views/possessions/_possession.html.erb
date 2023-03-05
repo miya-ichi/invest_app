@@ -2,22 +2,24 @@
   <div class="border-bottom">
     <div class="row align-items-center p-2">
       <div class="col-1">
-        <%= possession.stock.category.zero? ? '日本' : '米国' %>
+        <%= possession.stock.japanese? ? '日本' : '米国' %>
       </div>
       <div class="col-3">
         <%= possession.stock.name %>
       </div>
       <div class="col-1 d-flex justify-content-end">
-        <%= possession.volume %>
+        <%= number_with_delimiter(possession.volume) %>
       </div>
       <div class="col-1 d-flex justify-content-end">
-        <%= "#{possession.price}#{possession.stock.japanese? ? '円' : '＄'}" %>
+        <%= number_to_currency(possession.price, locale: possession.stock.japanese? ? :ja : :en) %>
       </div>
       <div class="col-2 d-flex justify-content-end">
-        <%= possession.stock.print_stock_prices_and_changes %>
+        <%= number_to_currency(possession.today_price, locale: possession.stock.japanese? ? :ja : :en) %>
+        <%= "(#{'+' if possession.price_difference.positive?}#{number_to_percentage(possession.price_difference, precision: 2)})" %>
       </div>
       <div class="col-2 d-flex justify-content-end">
-        <%= possession.print_stock_totals_and_changes %>
+        <%= number_to_currency(possession.total_price, locale: possession.stock.japanese? ? :ja : :en) %>
+        <%= "(#{'+' if possession.total_change.positive?}#{number_to_percentage(possession.total_change, precision: 2)})" %>
       </div>
       <div class="col-2">
         <%= link_to '編集', edit_possession_path(possession), class: 'btn btn-sm btn-primary me-3' %>
