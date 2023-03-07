@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      possession: 保有銘柄
     attributes:
       user:
         id: ID
@@ -12,3 +13,13 @@ ja:
         password_confirmation: パスワード（確認）
         created_at: 登録日時
         updated_at: 更新日時
+      possession:
+        stock_id: 銘柄
+        id: ID
+        price: 購入価格
+        volume: 数量
+        memo: メモ
+      price:
+        market_close: 現在価格
+      stock:
+        category: 分類

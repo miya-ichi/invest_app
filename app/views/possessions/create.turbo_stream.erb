@@ -1,0 +1,7 @@
+<%= turbo_stream.prepend 'possessions', @possession %>
+
+<%= turbo_stream.update 'new_possession', "" %>
+
+<%= turbo_stream.update 'flash' do %>
+  <%= render 'shared/flash_messages' %>
+<% end %>

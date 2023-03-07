@@ -1,5 +1,6 @@
 class Stock < ApplicationRecord
   has_many :prices, dependent: :destroy
+  has_many :possessions, dependent: :destroy
 
   validates :category, presence: true
   validates :code, presence: true, uniqueness: true
@@ -27,6 +28,10 @@ class Stock < ApplicationRecord
     data = query.quotes(symbol)
 
     prices.update(market_close: data[symbol]['regularMarketDayHigh'])
+  end
+
+  def japanese?
+    self.category.zero?
   end
 end
 

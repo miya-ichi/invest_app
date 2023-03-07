@@ -1,0 +1,5 @@
+<%= turbo_stream.update @possession %>
+
+<%= turbo_stream.update 'flash' do %>
+  <%= render 'shared/flash_messages' %>
+<% end %>
