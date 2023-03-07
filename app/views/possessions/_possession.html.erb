@@ -15,11 +15,15 @@
       </div>
       <div class="col-2 d-flex justify-content-end">
         <%= number_to_currency(possession.today_price, locale: possession.stock.japanese? ? :ja : :en) %>
-        <%= "(#{'+' if possession.price_difference.positive?}#{number_to_percentage(possession.price_difference, precision: 2)})" %>
+        <div class="<%= possession.price_difference.positive? ? 'text-success' : 'text-danger' %>">
+          <%= "(#{'+' if possession.price_difference.positive?}#{number_to_percentage(possession.price_difference, precision: 2)})" %>
+        </div>
       </div>
       <div class="col-2 d-flex justify-content-end">
         <%= number_to_currency(possession.total_price, locale: possession.stock.japanese? ? :ja : :en) %>
-        <%= "(#{'+' if possession.total_change.positive?}#{number_to_percentage(possession.total_change, precision: 2)})" %>
+        <div class="<%= possession.total_change.positive? ? 'text-success' : 'text-danger' %>">
+          <%= "(#{'+' if possession.total_change.positive?}#{number_to_percentage(possession.total_change, precision: 2)})" %>
+        </div>
       </div>
       <div class="col-2">
         <%= link_to '編集', edit_possession_path(possession), class: 'btn btn-sm btn-primary me-3' %>
