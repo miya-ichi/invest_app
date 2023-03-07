@@ -5,6 +5,7 @@
         <%= possession.stock.japanese? ? '日本' : '米国' %>
       </div>
       <div class="col-3">
+        <%= "(#{possession.stock.code})" %>
         <%= possession.stock.name %>
       </div>
       <div class="col-1 d-flex justify-content-end">
