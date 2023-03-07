@@ -14,7 +14,7 @@
       <div class="col-1"></div>
       <div class="col-1"></div>
       <div class="col-2">
-        <%= f.submit class: 'btn btn-primary' %>
+        <%= f.submit class: 'btn btn-sm btn-primary' %>
       </div>
     </div>
     <div class="row p-2 border-bottom">
@@ -23,7 +23,7 @@
         <%= f.text_field :memo, maxlength: 50, skip_label: true, label_as_placeholder: true, wrapper: false, control_class: 'form-control' %>
       </div>
       <div class="col-2">
-        <%= link_to 'キャンセル', possessions_path, class: 'btn btn-outline-secondary' %>
+        <%= link_to 'キャンセル', possessions_path, class: 'btn btn-sm btn-outline-secondary' %>
       </div>
     </div>
   <% end %>
