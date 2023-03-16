@@ -19,6 +19,7 @@
         <div class="<%= possession.price_difference.positive? ? 'text-success' : 'text-danger' %>">
           <%= "(#{'+' if possession.price_difference.positive?}#{number_to_percentage(possession.price_difference, precision: 2)})" %>
         </div>
+        <%= possession.stock.prices.last.date %>
       </div>
       <div class="col-2 d-flex justify-content-end">
         <%= number_to_currency(possession.total_price, locale: possession.stock.japanese? ? :ja : :en) %>
