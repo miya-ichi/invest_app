@@ -23,15 +23,18 @@ namespace :stock_prices do
     stock_ids = Possession.select(:stock_id).distinct.pluck(:stock_id)
     stocks = Stock.where(id: stock_ids, category: 1)
 
-    stocks.each do |stock|
-      if stock.prices.last.date < Time.zone.today
-        # 今日の株価が未取得なら、DBに登録する
-        stock.set_prices
-      else
-        # 今日の株価が取得済みなら、DBを更新する
-        stock.update_prices
+    # 日本時間の夜間でDBのレコードが切り替わらないようにUTCで実行する
+    Time.use_zone('UTC') do
+      stocks.each do |stock|
+        if stock.prices.last.date < Time.zone.today
+          # 今日の株価が未取得なら、DBに登録する
+          stock.set_prices
+        else
+          # 今日の株価が取得済みなら、DBを更新する
+          stock.update_prices
+        end
+        sleep(1)
       end
-      sleep(1)
     end
   end
 end
