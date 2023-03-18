@@ -17,7 +17,7 @@ class Stock < ApplicationRecord
       market_open: data[symbol]['regularMarketOpen'],
       daily_high: data[symbol]['regularMarketDayHigh'],
       daily_low: data[symbol]['regularMarketDayLow'],
-      market_close: data[symbol]['regularMarketDayHigh']
+      market_close: data[symbol]['regularMarketPrice']
     )
   end
 
@@ -27,7 +27,7 @@ class Stock < ApplicationRecord
     query = BasicYahooFinance::Query.new
     data = query.quotes(symbol)
 
-    prices.update(market_close: data[symbol]['regularMarketDayHigh'])
+    prices.last.update(market_close: data[symbol]['regularMarketPrice'])
   end
 
   def japanese?
