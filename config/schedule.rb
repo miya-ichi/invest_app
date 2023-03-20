@@ -36,7 +36,7 @@ set :output, "#{Rails.root}/log/cron.log"
 job_type :rake, "export PATH=\"/opt/homebrew/bin:$PATH\"; eval \"$(rbenv init -)\"; cd :path && RAILS_ENV=:environment bundle exec rake :task :output"
 
 every :weekday, at: ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'] do
-  rake "stock_prices:update_ja"
+  rake "stock_prices:update_jp"
 end
 
 every :weekday, at: ['22:30', '23:30', '0:30', '1:30', '2:30', '3:30', '4:30', '5:30', '6:30'] do
