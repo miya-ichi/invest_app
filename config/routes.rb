@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'static_pages/home'
   root to: 'possessions#index'
 
   get 'login', to: 'sessions#new'
