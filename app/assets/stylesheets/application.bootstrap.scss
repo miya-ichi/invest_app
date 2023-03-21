@@ -1,2 +1,17 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+.bg-gray {
+  background-color: #e8e8e8;
+}
+
+.hero {
+  background-image: url("invest_app.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.footer-menu {
+  display: inline-block;
+  list-style: none;
+}
