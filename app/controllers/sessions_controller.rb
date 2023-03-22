@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :redirect_to_logged_in_root, only: %i[new create]
+
   def new; end
 
   def create
@@ -15,5 +17,11 @@ class SessionsController < ApplicationController
   def destroy
     logout
     redirect_to login_url, success: 'ログアウトしました。'
+  end
+
+  private
+
+  def redirect_to_logged_in_root
+    redirect_to possessions_path if logged_in?
   end
 end

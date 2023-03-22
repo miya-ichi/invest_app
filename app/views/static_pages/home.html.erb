@@ -1,0 +1,28 @@
+<div class="hero row text-center justify-content-center p-3">
+  <h1 class="display-1 text-light">Invest APP</h1>
+  <div class="my-5 text-light display-6">
+    <p>あなたの投資活動をひとまとめに。</p>
+    <p>資産形成を促進しましょう！</p>
+  </div>
+  <div class="col-md-4">
+    <div class="card card-body shadow-sm py-3">
+      <span>さっそく使ってみる</span>
+      <%= link_to '新規登録', new_user_path, class: 'btn btn-success my-3' %>
+      <span class="mt-5">登録済みの方は</span>
+      <%= link_to 'ログイン', login_path, class: 'btn btn-primary my-3' %>
+    </div>
+  </div>
+</div>
+<div class="row text-center justify-content-center bg-gray p-3">
+  <div class="col-md-4">
+    <h1>使い方(後で詳細を作成)</h1>
+    <div>1.ユーザー登録</div>
+    <div>2.保有資産の登録</div>
+    <div>3.銘柄を研究する</div>
+    <div>4.資産状況を確認</div>
+    <div>
+      使ってみる
+      <%= link_to '新規登録', new_user_path, class: 'btn btn-success my-3' %>
+    </div>
+  </div>
+</div>
