@@ -1,4 +1,6 @@
 class PossessionsController < ApplicationController
+  before_action :require_login
+
   def index
     @possessions = current_user.possessions.all.order(created_at: :desc)
   end
