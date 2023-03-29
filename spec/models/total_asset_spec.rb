@@ -1,7 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe TotalAsset, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'バリデーション' do
+    it '日付は必須であること' do
+      total_asset = build(:total_asset, date: nil)
+      total_asset.valid?
+      expect(total_asset.errors[:date]).to include('を入力してください')
+    end
+
+    it '日付は一意であること' do
+      total_asset_a = create(:total_asset, date: Time.zone.today)
+      total_asset_b = build(:total_asset, user_id: total_asset_a.user_id, date: Time.zone.today)
+      total_asset_b.valid?
+      expect(total_asset_b.errors[:date]).to include('はすでに存在します')
+    end
+
+    it '総資産額は必須であること' do
+      total_asset = build(:total_asset, price: nil)
+      total_asset.valid?
+      expect(total_asset.errors[:price]).to include('を入力してください')
+    end
+  end
 end
 
 # == Schema Information
@@ -10,7 +29,7 @@ end
 #
 #  id         :bigint           not null, primary key
 #  date       :date             not null
-#  price      :float            not null
+#  total_asset      :float            not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :bigint           not null
