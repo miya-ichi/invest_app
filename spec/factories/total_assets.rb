@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :total_asset do
-    user { nil }
-    date { "2023-03-29" }
-    price { 1.5 }
+    user
+    date { Time.zone.today }
+    price { 1000000 }
   end
 end
 
