@@ -2,7 +2,7 @@ class PossessionsController < ApplicationController
   before_action :require_login
 
   def index
-    @possessions = current_user.possessions.all.includes(:stock).order(created_at: :desc)
+    @possessions = current_user.possessions.all.includes(stock: :prices).order(created_at: :desc)
   end
 
   def new
