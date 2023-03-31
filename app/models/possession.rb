@@ -26,6 +26,13 @@ class Possession < ApplicationRecord
     today_price * self.volume
   end
 
+  def total_price_to_jpy
+    jpy = Stock.find_by(code: 'JPY=X')
+    jpy.set_prices if jpy.prices.where(date: Time.zone.today).blank?
+
+    total_price * jpy.prices.last.market_close
+  end
+
   def total_change
     ((today_price / self.price) - 1) * 100
   end
