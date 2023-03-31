@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :total_asset do
     user
     date { Time.zone.today }
-    price { 1000000 }
+    price { 1_000_000 }
   end
 end
 
@@ -19,8 +19,8 @@ end
 #
 # Indexes
 #
-#  index_total_assets_on_date     (date) UNIQUE
-#  index_total_assets_on_user_id  (user_id)
+#  index_total_assets_on_user_id           (user_id)
+#  index_total_assets_on_user_id_and_date  (user_id,date) UNIQUE
 #
 # Foreign Keys
 #

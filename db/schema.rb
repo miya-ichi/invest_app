@@ -56,7 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_29_032421) do
     t.float "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["date"], name: "index_total_assets_on_date", unique: true
+    t.index ["user_id", "date"], name: "index_total_assets_on_user_id_and_date", unique: true
     t.index ["user_id"], name: "index_total_assets_on_user_id"
   end
 

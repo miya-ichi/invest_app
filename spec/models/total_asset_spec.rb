@@ -29,15 +29,15 @@ end
 #
 #  id         :bigint           not null, primary key
 #  date       :date             not null
-#  total_asset      :float            not null
+#  price      :float            not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :bigint           not null
 #
 # Indexes
 #
-#  index_total_assets_on_date     (date) UNIQUE
-#  index_total_assets_on_user_id  (user_id)
+#  index_total_assets_on_user_id           (user_id)
+#  index_total_assets_on_user_id_and_date  (user_id,date) UNIQUE
 #
 # Foreign Keys
 #
