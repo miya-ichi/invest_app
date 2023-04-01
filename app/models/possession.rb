@@ -8,15 +8,15 @@ class Possession < ApplicationRecord
   validates :memo, length: { maximum: 50 }
 
   def today_price
-    self.stock.prices[-1].market_close
+    self.stock.prices.order(date: :desc).first.market_close
   end
 
   def price_difference
     if self.stock.prices.size >= 2
-      today = self.stock.prices[-1].market_close
-      yesterday = self.stock.prices[-2].market_close
+      prices = self.stock.prices.order(date: :desc)
+      yesterday = prices[1].market_close
 
-      ((today / yesterday) - 1) * 100
+      ((today_price / yesterday) - 1) * 100
     else
       0
     end
@@ -24,6 +24,13 @@ class Possession < ApplicationRecord
 
   def total_price
     today_price * self.volume
+  end
+
+  def total_price_to_jpy
+    jpy = Stock.find_by(code: 'JPY=X')
+    jpy.set_prices if jpy.prices.where(date: Time.zone.today).blank?
+
+    total_price * jpy.prices.order(date: :desc).first.market_close
   end
 
   def total_change

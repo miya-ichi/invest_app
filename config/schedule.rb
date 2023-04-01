@@ -42,3 +42,7 @@ end
 every :weekday, at: ['22:30', '23:30', '0:30', '1:30', '2:30', '3:30', '4:30', '5:30', '6:30'] do
   rake "stock_prices:update_us"
 end
+
+every 1.day, at: '22:00' do
+  rake "user:calculate_total_asset"
+end
