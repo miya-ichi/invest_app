@@ -30,7 +30,7 @@ class Possession < ApplicationRecord
     jpy = Stock.find_by(code: 'JPY=X')
     jpy.set_prices if jpy.prices.where(date: Time.zone.today).blank?
 
-    total_price * jpy.prices.last.market_close
+    total_price * jpy.prices.order(date: :desc).first.market_close
   end
 
   def total_change
