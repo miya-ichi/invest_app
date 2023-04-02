@@ -3,3 +3,9 @@
 <%= turbo_stream.update 'flash' do %>
   <%= render 'shared/flash_messages' %>
 <% end %>
+
+<% if current_user.possessions.blank? %>
+  <%= turbo_stream.update 'new_possession' do %>
+    <div class="text-center">まだ登録されていません。新規登録ボタンから登録してみましょう!</div>
+  <% end %>
+<% end %>

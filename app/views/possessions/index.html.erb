@@ -18,14 +18,20 @@
       </div>
 
       <div class="card-body">
-        <%= turbo_frame_tag 'new_possession' %>
+        <%= turbo_frame_tag 'new_possession' do %>
+          <% if @possessions.blank? %>
+            <div class="text-center">まだ登録されていません。新規登録ボタンから登録してみましょう!</div>
+          <% end %>
+        <% end %>
         <div id="possessions">
           <%= render @possessions %>
         </div>
         <div class="row p-2">
           <div class="col d-flex justify-content-center align-items-center">
-            <div class="h3">保有総額 <%= number_to_currency(current_user.total_assets.last.price) %></div>
-            <div class="h6 text-secondary ms-1">(<%= current_user.total_assets.last.date %> 22:00時点)</div>
+            <% if current_user.total_assets.any? %>
+              <div class="h3">保有総額 <%= number_to_currency(current_user.total_assets.last.price) %></div>
+              <div class="h6 text-secondary ms-1">(<%= current_user.total_assets.last.date %> 22:00時点)</div>
+            <% end %>
           </div>
         </div>
       </div>
