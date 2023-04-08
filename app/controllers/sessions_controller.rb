@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_back_or_to possessions_url, success: 'ログインしました。'
+      redirect_back_or_to dashboard_url, success: 'ログインしました。'
     else
       flash.now[:danger] = 'ログインに失敗しました。'
       render :new, status: :unprocessable_entity
@@ -22,6 +22,6 @@ class SessionsController < ApplicationController
   private
 
   def redirect_to_logged_in_root
-    redirect_to possessions_path if logged_in?
+    redirect_to dashboard_url if logged_in?
   end
 end
