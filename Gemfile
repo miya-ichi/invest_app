@@ -88,3 +88,5 @@ gem 'rails-i18n'
 gem 'basic_yahoo_finance'
 gem 'bootstrap_form'
 gem 'whenever', require: false
+gem 'chartkick'
+gem 'groupdate'
