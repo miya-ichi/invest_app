@@ -26,6 +26,9 @@
           <%= number_to_currency(@possessions.sum { |n| n[1] }) %>
         </div>
       </div>
+      <div class="card-body text-end">
+        <%= link_to '一覧へ', possessions_path, class: 'btn btn-primary' %>
+      </div>
     </div>
   </div>
 </div>
