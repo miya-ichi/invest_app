@@ -27,6 +27,8 @@ class Possession < ApplicationRecord
   end
 
   def total_price_to_jpy
+    return total_price if self.stock.japanese?
+    
     jpy = Stock.find_by(code: 'JPY=X')
     jpy.set_prices if jpy.prices.where(date: Time.zone.today).blank?
 
