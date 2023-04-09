@@ -23,7 +23,7 @@
       <div class="card-body">
         <div class="h6 text-center">
           資産総額:
-          <%= number_to_currency(@possessions.map{ |n| n[1] }.sum) %>
+          <%= number_to_currency(@possessions.sum { |n| n[1] }) %>
         </div>
       </div>
     </div>
