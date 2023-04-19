@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :note do
-    user { nil }
-    title { "MyString" }
-    private { false }
+    user
+    title { 'test' }
+    private { true }
   end
 end
 

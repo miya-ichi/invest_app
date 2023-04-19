@@ -1,7 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Note, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'バリデーション' do
+    it 'タイトルは必須であること' do
+      note = build(:note, title: nil)
+      note.valid?
+      expect(note.errors[:title]).to include('を入力してください')
+    end
+  end
 end
 
 # == Schema Information
