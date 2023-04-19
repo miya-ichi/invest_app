@@ -1,5 +1,8 @@
 class Note < ApplicationRecord
   belongs_to :user
+
+  validates :title, presence: true
+  validates :private, presence: true
 end
 
 # == Schema Information
