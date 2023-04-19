@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'notes/index'
+  get 'notes/new'
+  get 'notes/edit'
   root to: 'static_pages#home'
 
   get 'login', to: 'sessions#new'
