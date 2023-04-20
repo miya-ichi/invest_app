@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'notes/index'
-  get 'notes/new'
-  get 'notes/edit'
   root to: 'static_pages#home'
 
   get 'login', to: 'sessions#new'
@@ -12,4 +9,5 @@ Rails.application.routes.draw do
 
   resources :users, except: %i(index show edit)
   resources :possessions, except: %i(show)
+  resources :notes
 end
