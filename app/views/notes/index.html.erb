@@ -1,2 +1,13 @@
-<h1>Notes#index</h1>
-<p>Find me in app/views/notes/index.html.erb</p>
+<div class="col-md-8">
+  <h1 class="text-center mb-5">研究ノート</h1>
+  <%= link_to '＋ノートを作成', new_note_path, class: 'btn btn-primary mb-3' %>
+  <div class="card shadow-sm">
+    <% if @notes.blank? %>
+      <div class="card-body text-center">
+        まだノートがありません。ノートを作成ボタンから作成してみましょう！
+      </div>
+    <% else %>
+      <%= render @notes %>
+    <% end %>
+  </div>
+</div>

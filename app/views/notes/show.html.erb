@@ -1,0 +1,14 @@
+<div class="col-md-8">
+  <div class="d-flex justify-content-end">
+    <%= link_to '一覧へ', notes_path, class: 'nav-link' %>
+  </div>
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h1><%= @note.title %></h1>
+      <div class="user_area">
+        <%= @note.user.username %>
+      </div>
+      <%= @note.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+    </div>
+  </div>
+</div>
