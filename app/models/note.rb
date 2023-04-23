@@ -1,7 +1,7 @@
 class Note < ApplicationRecord
   belongs_to :user
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 50 }
   validates :private, presence: true
 end
 
