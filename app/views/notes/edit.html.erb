@@ -1,2 +1,9 @@
-<h1>Notes#edit</h1>
-<p>Find me in app/views/notes/edit.html.erb</p>
+<%= turbo_frame_tag @note do %>
+  <hr>
+  <%= bootstrap_form_with model: @note do |f| %>
+    <%= f.text_field :title, maxlength: 50, help: 'タイトルは50文字まで入力できます。', placeholder: 'ここにタイトルを入力' %>
+    <%= f.submit class: 'btn btn-sm btn-primary me-3' %>
+    <%= link_to 'キャンセル', @note, class: 'btn btn-sm btn-outline-secondary' %>
+  <% end %>
+  <hr>
+<% end %>
