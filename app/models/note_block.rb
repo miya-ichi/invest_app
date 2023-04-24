@@ -1,5 +1,7 @@
 class NoteBlock < ApplicationRecord
   belongs_to :note
+
+  validates :index, presence: true
 end
 
 # == Schema Information
