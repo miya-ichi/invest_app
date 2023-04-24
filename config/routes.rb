@@ -9,5 +9,7 @@ Rails.application.routes.draw do
 
   resources :users, except: %i(index show edit)
   resources :possessions, except: %i(show)
-  resources :notes
+  resources :notes do
+    resources :note_blocks, except: %i(index show)
+  end
 end
