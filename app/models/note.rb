@@ -1,5 +1,6 @@
 class Note < ApplicationRecord
   belongs_to :user
+  has_many :note_blocks, dependent: :destroy
 
   validates :title, presence: true, length: { maximum: 50 }
   validates :private, presence: true
