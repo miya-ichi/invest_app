@@ -1,0 +1,5 @@
+<%= form_with model: [@note, @note.note_blocks.build] do |f| %>
+  <%= f.text_area :content, class: 'form-control' %>
+  <%= f.hidden_field :index, value: @note.note_blocks.size %>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
