@@ -1,0 +1,2 @@
+class NoteBlocksController < ApplicationController
+end
