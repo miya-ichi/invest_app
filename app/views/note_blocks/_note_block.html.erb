@@ -1,6 +1,8 @@
-<div class="row">
-  <div class="col">
+<%= turbo_frame_tag note_block do %>
+  <div class="block mt-3 mb-5 d-flex align-items-center">
     <%= note_block.content %>
-    <%= note_block.index %>
+    <div class="ms-auto">
+      <%= link_to '削除', note_note_block_path(@note, note_block), data: { turbo_method: :delete }, class: 'btn btn-danger' %>
+    </div>
   </div>
-</div>
+<% end %>
