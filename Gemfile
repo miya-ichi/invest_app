@@ -90,3 +90,4 @@ gem 'bootstrap_form'
 gem 'whenever', require: false
 gem 'chartkick'
 gem 'groupdate'
+gem 'httpclient'

@@ -130,6 +130,7 @@ GEM
     groupdate (6.2.0)
       activesupport (>= 5.2)
     hashie (5.0.0)
+    httpclient (2.8.3)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
@@ -338,6 +339,7 @@ DEPENDENCIES
   erb_lint
   factory_bot_rails
   groupdate
+  httpclient
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
