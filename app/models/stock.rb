@@ -12,7 +12,7 @@ class Stock < ApplicationRecord
     # query = BasicYahooFinance::Query.new
     # data = query.quotes(symbol)
 
-    uri = 'https://query2.finance.yahoo.com/v10/finance/quoteSummary/' + symbol + '?modules=price'
+    uri = "https://query2.finance.yahoo.com/v10/finance/quoteSummary/#{symbol}?modules=price"
     client = HTTPClient.new
     request = client.get(uri)
     response = JSON.parse(request.body)['quoteSummary']['result'][0]['price']
@@ -32,7 +32,7 @@ class Stock < ApplicationRecord
     # query = BasicYahooFinance::Query.new
     # data = query.quotes(symbol)
 
-    uri = 'https://query2.finance.yahoo.com/v10/finance/quoteSummary/' + symbol + '?modules=price'
+    uri = "https://query2.finance.yahoo.com/v10/finance/quoteSummary/#{symbol}?modules=price"
     client = HTTPClient.new
     request = client.get(uri)
     response = JSON.parse(request.body)['quoteSummary']['result'][0]['price']
