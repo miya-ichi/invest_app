@@ -1,6 +1,8 @@
 <%= turbo_frame_tag note_block do %>
   <div class="block mt-3 mb-5 d-flex align-items-center">
-    <%= note_block.content %>
+    <div class="d-block">
+      <%= markdown(note_block.content) %>
+    </div>
     <div class="ms-auto">
       <%= link_to '削除', note_note_block_path(@note, note_block), data: { turbo_method: :delete }, class: 'btn btn-danger' %>
     </div>
