@@ -62,3 +62,7 @@ Style/RedundantSelf:
 # 使用しているAPIの使用的に厳しい気がするので少し緩める
 Metrics/AbcSize:
   Max: 25
+
+Rails/OutputSafety:
+  Exclude:
+    - 'app/helpers/markdown_helper.rb'
