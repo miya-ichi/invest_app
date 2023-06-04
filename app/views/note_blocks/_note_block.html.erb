@@ -1,6 +1,6 @@
 <%= turbo_frame_tag note_block do %>
   <div class="block mt-3 mb-5 d-flex align-items-center">
-    <div class="d-block">
+    <div class="d-block" id="<%= note_block.index %>">
       <%= markdown(note_block.content) %>
     </div>
     <div class="ms-auto">
