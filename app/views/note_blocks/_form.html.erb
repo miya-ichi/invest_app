@@ -1,5 +1,8 @@
-<%= form_with model: [@note, @note.note_blocks.build] do |f| %>
-  <%= f.text_area :content, class: 'form-control' %>
+<%= form_with model: [@note, @note.note_blocks.build], data: { turbo: false } do |f| %>
+  <div class="flextextarea" data-controller="form">
+    <div class="flextextarea_dummy" area-hidden="true" data-form-target="output"></div>
+    <%= f.text_area :content, class: 'flextextarea_textarea', id: 'flextextarea', data: { action: 'form#resize', 'form-target': 'input' } %>
+  </div>
   <%= f.hidden_field :index, value: @note.note_blocks.size %>
   <%= f.submit class: 'btn btn-primary my-3' %>
 <% end %>
