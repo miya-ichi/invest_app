@@ -20,7 +20,7 @@
 
   <div class="row">
     <div class="col">
-      <%= render @note.note_blocks %>
+      <%= render @note.note_blocks.order(index: :asc) %>
       <%= render 'note_blocks/form' %>
     </div>
   </div>
