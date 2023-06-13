@@ -1,7 +1,19 @@
 class NoteBlocksController < ApplicationController
+  def edit
+    @note = current_user.notes.find(params[:id])
+    @note_block = @note.note_blocks.find(params[:note_id])
+  end
+
   def create
     @note = current_user.notes.find(params[:note_id])
     @note_block = @note.note_blocks.create(note_block_params)
+    redirect_to note_url(@note, anchor: @note_block.index)
+  end
+
+  def update
+    @note = current_user.notes.find(params[:note_id])
+    @note_block = @note.note_blocks.find(params[:id])
+    @note_block.update!(note_block_params)
     redirect_to note_url(@note, anchor: @note_block.index)
   end
 

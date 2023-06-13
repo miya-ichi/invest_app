@@ -1,0 +1,11 @@
+<%= turbo_frame_tag @note_block do %>
+  <%= form_with model: [@note, @note_block] do |f| %>
+    <div class="flextextarea" data-controller="form">
+      <div class="flextextarea_dummy" area-hidden="true" data-form-target="output"></div>
+      <%= f.text_area :content, class: 'flextextarea_textarea', id: 'flextextarea', data: { action: 'form#resize', 'form-target': 'input' } %>
+    </div>
+    <%= f.hidden_field :index, value: @note_block.index %>
+    <%= f.submit class: 'btn btn-primary my-3' %>
+  <% end %>
+  <%= link_to 'キャンセル', note_path(@note), class: 'btn btn-outline-secondary' %>
+<% end %>
