@@ -10,9 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_29_032421) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_24_143559) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "note_blocks", force: :cascade do |t|
+    t.bigint "note_id", null: false
+    t.text "content"
+    t.integer "index", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["note_id"], name: "index_note_blocks_on_note_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title", null: false
+    t.boolean "private", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notes_on_user_id"
+  end
 
   create_table "possessions", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -72,6 +90,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_29_032421) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "note_blocks", "notes"
+  add_foreign_key "notes", "users"
   add_foreign_key "possessions", "stocks"
   add_foreign_key "possessions", "users"
   add_foreign_key "prices", "stocks"

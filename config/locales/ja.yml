@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー
       possession: 保有銘柄
+      note: 研究ノート
     attributes:
       user:
         id: ID
@@ -23,3 +24,6 @@ ja:
         market_close: 現在価格
       stock:
         category: 分類
+      note:
+        title: タイトル
+        private: プライベート

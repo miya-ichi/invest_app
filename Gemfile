@@ -91,3 +91,4 @@ gem 'whenever', require: false
 gem 'chartkick'
 gem 'groupdate'
 gem 'httpclient'
+gem 'redcarpet'

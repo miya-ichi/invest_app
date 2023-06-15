@@ -1,0 +1,29 @@
+<div class="col-md-8">
+  <%= link_to '一覧', notes_path, class: 'nav-link' %>
+  <div class="card card-body">
+    <div class="d-flex justify-content-end">
+      <%= link_to '編集', edit_note_path, data: { turbo_frame: dom_id(@note) }, class: 'btn btn-primary me-3' %>
+      <%= link_to '削除', @note, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+    </div>
+    <div class="my-3">
+      <%= image_tag 'https://placehold.jp/150x150.png', alt: 'プロフィール画像', class: 'rounded-circle', width: '50' %>
+      <%= @note.user.username %>
+    </div>
+    <%= turbo_frame_tag @note do %>
+      <div class="h2">
+        <%= @note.title %>
+        <%= '(非公開)' if @note.private %>
+      </div>
+    <% end %>
+    <%= @note.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+
+    <hr>
+
+    <div class="row">
+      <div class="col">
+        <%= render @note.note_blocks.order(index: :asc) %>
+        <%= render 'note_blocks/form' %>
+      </div>
+    </div>
+  </div>
+</div>
