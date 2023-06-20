@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :mypage do
+    get 'accounts/show'
+    get 'accounts/edit'
+  end
   root to: 'static_pages#home'
 
   get 'login', to: 'sessions#new'
