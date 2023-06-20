@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :mypage do
-    get 'accounts/show'
-    get 'accounts/edit'
-  end
   root to: 'static_pages#home'
 
   get 'login', to: 'sessions#new'
@@ -15,5 +11,9 @@ Rails.application.routes.draw do
   resources :possessions, except: %i(show)
   resources :notes do
     resources :note_blocks, except: %i(index show)
+  end
+
+  namespace :mypage do
+    resource :account, only: %i(show edit update)
   end
 end
