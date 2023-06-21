@@ -1,5 +1,6 @@
-class Mypage::AccountsController < ApplicationController
+class Mypage::AccountsController < Mypage::BaseController
   def show
+    @user = User.find(current_user.id)
   end
 
   def edit
