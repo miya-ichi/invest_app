@@ -2,15 +2,22 @@
   <h1 class="text-center mb-5">マイページ</h1>
   <div class="card card-body">
     <p>ユーザー情報</p>
+    <div class="ms-auto">
+      <%= link_to '編集', edit_mypage_account_path, class: 'btn btn-primary' %>
+    </div>
     <table class="table table-hover">
       <tbody>
         <tr>
-          <th>名前</th>
+          <th><%= User.human_attribute_name(:username) %></th>
           <td><%= @user.username %></td>
         </tr>
         <tr>
-          <th>メールアドレス</th>
+          <th><%= User.human_attribute_name(:email) %></th>
           <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th><%= User.human_attribute_name(:password) %></th>
+          <td>****</td>
         </tr>
       </tbody>
     </table>
