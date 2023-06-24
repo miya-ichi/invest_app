@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   resources :notes do
     resources :note_blocks, except: %i(index show)
   end
+
+  namespace :mypage do
+    resource :account, only: %i(show edit update)
+  end
 end

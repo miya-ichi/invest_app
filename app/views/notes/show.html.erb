@@ -6,7 +6,11 @@
       <%= link_to '削除', @note, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
     </div>
     <div class="my-3">
-      <%= image_tag 'https://placehold.jp/150x150.png', alt: 'プロフィール画像', class: 'rounded-circle', width: '50' %>
+      <% if @note.user.avatar.attached? %>
+        <%= image_tag @note.user.avatar, alt: 'プロフィール画像', class: 'rounded-circle', width: '50' %>
+      <% else %>
+        <%= image_tag 'https://placehold.jp/150x150.png', alt: 'プロフィール画像', class: 'rounded-circle', width: '50' %>
+      <% end %>
       <%= @note.user.username %>
     </div>
     <%= turbo_frame_tag @note do %>

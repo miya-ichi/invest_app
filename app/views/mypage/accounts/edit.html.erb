@@ -1,0 +1,26 @@
+<div class="col-md-6">
+  <h1 class="text-center mb-5">ユーザー情報の変更</h1>
+  <div class="card card-body">
+    <%= bootstrap_form_with model: @user, url: mypage_account_path do |f| %>
+      <div class="form-group mb-3">
+        <%= f.file_field :avatar %>
+      </div>
+      <div class="form-group mb-3">
+        <%= f.text_field :username %>
+      </div>
+      <div class="form-group mb-3">
+        <%= f.text_field :email %>
+      </div>
+      <div class="form-group mb-3">
+        <%= f.password_field :password %>
+      </div>
+      <div class="form-group mb-3">
+        <%= f.password_field :password_confirmation %>
+      </div>
+      <div class="d-grid gap-2">
+        <%= f.submit class: 'btn btn-primary my-3' %>
+        <%= link_to 'キャンセル', mypage_account_path, class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

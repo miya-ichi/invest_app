@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :stocks, through: :possessions
   has_many :total_assets, dependent: :destroy
   has_many :notes, dependent: :destroy
+  has_one_attached :avatar
 
   authenticates_with_sorcery!
 
