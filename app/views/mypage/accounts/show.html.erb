@@ -8,6 +8,16 @@
     <table class="table table-hover">
       <tbody>
         <tr>
+          <th><%= User.human_attribute_name(:avatar) %></th>
+          <td>
+            <% if @user.avatar.attached? %>
+              <%= image_tag @user.avatar, alt: 'プロフィール画像', class: 'rounded-circle', width: '150' %>
+            <% else %>
+              <%= image_tag 'https://placehold.jp/150x150.png', alt: 'プロフィール画像', class: 'rounded-circle' %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
           <th><%= User.human_attribute_name(:username) %></th>
           <td><%= @user.username %></td>
         </tr>

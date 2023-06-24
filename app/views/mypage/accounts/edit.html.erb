@@ -3,6 +3,9 @@
   <div class="card card-body">
     <%= bootstrap_form_with model: @user, url: mypage_account_path do |f| %>
       <div class="form-group mb-3">
+        <%= f.file_field :avatar %>
+      </div>
+      <div class="form-group mb-3">
         <%= f.text_field :username %>
       </div>
       <div class="form-group mb-3">
