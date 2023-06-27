@@ -9,3 +9,6 @@ application.register("form", FormController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import SelectStocksController from "./select_stocks_controller"
+application.register("select-stocks", SelectStocksController)
