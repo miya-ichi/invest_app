@@ -6,7 +6,22 @@ export default class extends Controller {
   static targets = ["selectBox"];
 
   connect() {
-    const config = {};
+    const config = {
+      valueField: 'id',
+      labelField: 'name',
+      searchField: 'name',
+      selectOnTab: true,
+      load: (query, callback) => {
+        var url = this.selectBoxTarget.dataset.urlValue + '.json?q=' + encodeURIComponent(query);
+        fetch(url)
+          .then(response => response.json())
+          .then(json => {
+            callback(json);
+          }).catch(() => {
+            callback();
+          });
+      }
+    };
     new TomSelect(this.selectBoxTarget, config);
   }
 }
