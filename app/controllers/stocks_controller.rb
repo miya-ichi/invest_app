@@ -4,9 +4,9 @@ class StocksController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json {
+      format.json do
         render json: @stocks.map { |s| { id: s.id, name: "#{s.code}:#{s.name}" } }
-      }
+      end
     end
   end
 end
