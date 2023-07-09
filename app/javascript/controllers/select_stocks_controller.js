@@ -7,6 +7,11 @@ export default class extends Controller {
 
   connect() {
     const config = {
+      plugins: {
+        'clear_button': {
+          'title': '入力をリセット'
+        }
+      },
       valueField: 'id',
       labelField: 'name',
       searchField: 'name',
