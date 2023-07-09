@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   namespace :mypage do
     resource :account, only: %i(show edit update)
   end
+
+  resources :stocks, only: %i(index)
 end

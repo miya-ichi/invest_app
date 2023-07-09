@@ -2,7 +2,9 @@
   <%= bootstrap_form_with model: @possession do |f| %>
     <div class="row">
       <div class="form-group col-5">
-        <%= f.collection_select :stock_id, Stock.all, :id, ->(stock) { "#{stock.code}:#{stock.name}" }, prompt: '選択してください' %>
+        <%= f.collection_select :stock_id, {}, :id, ->(stock) { "#{stock.code}:#{stock.name}" },
+                                { include_blank: '銘柄を検索(証券コード or ティッカー or 銘柄名)' },
+                                data: { controller: 'select-stocks', 'select-stocks_target': 'selectBox', url_value: stocks_path } %>
       </div>
       <div class="form-group col-2">
         <%= f.number_field :price, min: 0, step: 0.1 %>
