@@ -72,7 +72,8 @@ GEM
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
-    basic_yahoo_finance (0.3.1)
+    basic_yahoo_finance (0.5.1)
+      net-http-persistent (~> 4.0, >= 4.0.2)
     bcrypt (3.1.18)
     better_html (2.0.1)
       actionview (>= 6.0)
@@ -100,6 +101,7 @@ GEM
     chartkick (5.0.1)
     chronic (0.10.2)
     concurrent-ruby (1.2.0)
+    connection_pool (2.4.1)
     crass (1.0.6)
     cssbundling-rails (1.1.2)
       railties (>= 6.0.0)
@@ -158,6 +160,8 @@ GEM
     minitest (5.17.0)
     msgpack (1.6.0)
     multi_xml (0.6.0)
+    net-http-persistent (4.0.2)
+      connection_pool (~> 2.2)
     net-imap (0.3.4)
       date
       net-protocol
