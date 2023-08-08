@@ -1,6 +1,8 @@
 class NotesTag < ApplicationRecord
   belongs_to :tag
   belongs_to :note
+
+  validates :tag_id, uniqueness: { scope: :note_id }
 end
 
 # == Schema Information
@@ -15,8 +17,9 @@ end
 #
 # Indexes
 #
-#  index_notes_tags_on_note_id  (note_id)
-#  index_notes_tags_on_tag_id   (tag_id)
+#  index_notes_tags_on_note_id             (note_id)
+#  index_notes_tags_on_tag_id              (tag_id)
+#  index_notes_tags_on_tag_id_and_note_id  (tag_id,note_id) UNIQUE
 #
 # Foreign Keys
 #
