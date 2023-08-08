@@ -17,8 +17,9 @@ end
 #
 # Indexes
 #
-#  index_notes_tags_on_note_id  (note_id)
-#  index_notes_tags_on_tag_id   (tag_id)
+#  index_notes_tags_on_note_id             (note_id)
+#  index_notes_tags_on_tag_id              (tag_id)
+#  index_notes_tags_on_tag_id_and_note_id  (tag_id,note_id) UNIQUE
 #
 # Foreign Keys
 #

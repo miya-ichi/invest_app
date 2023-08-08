@@ -66,6 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_06_143150) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["note_id"], name: "index_notes_tags_on_note_id"
+    t.index ["tag_id", "note_id"], name: "index_notes_tags_on_tag_id_and_note_id", unique: true
     t.index ["tag_id"], name: "index_notes_tags_on_tag_id"
   end
 

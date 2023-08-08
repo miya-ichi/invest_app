@@ -5,6 +5,7 @@ class CreateNotesTags < ActiveRecord::Migration[7.0]
       t.references :note, null: false, foreign_key: true
 
       t.timestamps
+      t.index [:tag_id, :note_id], unique: true
     end
   end
 end
