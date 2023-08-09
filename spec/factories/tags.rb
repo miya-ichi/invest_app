@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :tag do
-    name { "MyString" }
+    name { 'MyString' }
   end
 end
 

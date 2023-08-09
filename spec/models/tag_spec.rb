@@ -15,11 +15,13 @@ RSpec.describe Tag, type: :model do
       expect(tag.errors[:name]).to include('はすでに存在します')
     end
 
-    it 'タグ名は15文字以内であること' do
+    it 'タグ名は15文字以内であれば登録できる' do
       tag = build(:tag, name: 'a' * 15)
       tag.valid?
       expect(tag.errors[:name]).not_to include('は15文字以内で入力してください')
+    end
 
+    it 'タグ名は16文字以上であれば登録できない' do
       tag = build(:tag, name: 'a' * 16)
       tag.valid?
       expect(tag.errors[:name]).to include('は15文字以内で入力してください')
