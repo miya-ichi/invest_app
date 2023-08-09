@@ -1,6 +1,11 @@
 class NotesController < ApplicationController
   def index
-    @notes = current_user.notes
+    if params[:tag]
+      @tag = Tag.find_by(name: params[:tag])
+      @notes = @tag.notes.where(user_id: current_user.id)
+    else
+      @notes = current_user.notes
+    end
   end
 
   def show
