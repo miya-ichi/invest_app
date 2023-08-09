@@ -9,6 +9,7 @@
       </div>
       <%= bootstrap_form_with model: @note do |f| %>
         <%= f.text_field :title, maxlength: 50, help: 'タイトルは50文字まで入力できます。', placeholder: 'ここにタイトルを入力' %>
+        <%= f.text_field :tags, value: nil, help: 'タグは,区切りで複数設定可能です。一つのタグは30文字まで設定可能です(30文字を超えた部分は無視されます)。', placeholder: '例)雑記,銘柄分析,AAPL,etc...' %>
         <%= f.submit '作成する', class: 'btn btn-primary' %>
       <% end %>
     </div>

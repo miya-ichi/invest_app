@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_24_070320) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_09_145157) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,6 +60,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_24_070320) do
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
+  create_table "notes_tags", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "note_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["note_id"], name: "index_notes_tags_on_note_id"
+    t.index ["tag_id", "note_id"], name: "index_notes_tags_on_tag_id_and_note_id", unique: true
+    t.index ["tag_id"], name: "index_notes_tags_on_tag_id"
+  end
+
   create_table "possessions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "stock_id", null: false
@@ -96,6 +106,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_24_070320) do
     t.index ["code"], name: "index_stocks_on_code", unique: true
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name", limit: 30, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
   create_table "total_assets", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.date "date", null: false
@@ -122,6 +139,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_24_070320) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "note_blocks", "notes"
   add_foreign_key "notes", "users"
+  add_foreign_key "notes_tags", "notes"
+  add_foreign_key "notes_tags", "tags"
   add_foreign_key "possessions", "stocks"
   add_foreign_key "possessions", "users"
   add_foreign_key "prices", "stocks"

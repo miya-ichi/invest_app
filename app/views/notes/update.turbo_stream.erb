@@ -1,8 +1,25 @@
 <%= turbo_stream.update dom_id(@note) do %>
-  <div class="h2">
-    <%= @note.title %>
-    <%= '(非公開)' if @note.private %>
+  <div class="col d-flex">
+    <div class="note_title">
+      <%= @note.title %>
+      <%= '(非公開)' if @note.private %>
+    </div>
+    <div class="ms-auto">
+      作成日時:<%= @note.created_at.strftime('%Y/%m/%d %H:%M:%S') %><br>
+      更新日時:<%= @note.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>
+    </div>
   </div>
+  <% if @note.tags.any? %>
+    <ul class="notes_tags">
+      <% @note.tags.each do |tag| %>
+        <li class="me-3">
+          <%= link_to tag.name, '#', class: 'link-secondary' %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <span class="text-secondary">タグなし</span>
+  <% end %>
 <% end %>
 
 <%= turbo_stream.update 'flash' do %>

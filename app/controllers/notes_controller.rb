@@ -1,6 +1,11 @@
 class NotesController < ApplicationController
   def index
-    @notes = current_user.notes
+    if params[:tag]
+      @tag = Tag.find_by(name: params[:tag])
+      @notes = @tag.notes.where(user_id: current_user.id)
+    else
+      @notes = current_user.notes
+    end
   end
 
   def show
@@ -13,12 +18,15 @@ class NotesController < ApplicationController
 
   def edit
     @note = current_user.notes.find(params[:id])
+    @tags = @note.tags.pluck(:name)
   end
 
   def create
     @note = current_user.notes.build(note_params)
+    tags = params[:note][:tags].split(',')
 
     if @note.save
+      @note.save_notes_tags(tags)
       redirect_to note_url(@note), success: "ノート「#{@note.title}」を作成しました。"
     else
       render :new, status: :unprocessable_entity
@@ -27,8 +35,10 @@ class NotesController < ApplicationController
 
   def update
     @note = current_user.notes.find(params[:id])
+    tags = params[:note][:tags].split(',')
 
     if @note.update(note_params)
+      @note.save_notes_tags(tags)
       flash.now[:success] = "ノート「#{@note.title}」を更新しました。"
     else
       render :edit, status: :unprocessable_entity
