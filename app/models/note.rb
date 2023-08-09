@@ -17,7 +17,7 @@ class Note < ApplicationRecord
     end
 
     new_tags.each do |new_name|
-      notes_tag = Tag.find_or_create_by(name: new_name)
+      notes_tag = Tag.find_or_create_by(name: new_name[0..29])
       self.tags << notes_tag
     end
   end

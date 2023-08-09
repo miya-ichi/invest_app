@@ -9,7 +9,7 @@ end
 # Table name: tags
 #
 #  id         :bigint           not null, primary key
-#  name       :string(15)       not null
+#  name       :string(30)       not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

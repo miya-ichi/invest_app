@@ -15,16 +15,16 @@ RSpec.describe Tag, type: :model do
       expect(tag.errors[:name]).to include('はすでに存在します')
     end
 
-    it 'タグ名は15文字以内であれば登録できる' do
-      tag = build(:tag, name: 'a' * 15)
+    it 'タグ名は30文字以内であれば登録できる' do
+      tag = build(:tag, name: 'a' * 30)
       tag.valid?
-      expect(tag.errors[:name]).not_to include('は15文字以内で入力してください')
+      expect(tag.errors[:name]).not_to include('は30文字以内で入力してください')
     end
 
-    it 'タグ名は16文字以上であれば登録できない' do
-      tag = build(:tag, name: 'a' * 16)
+    it 'タグ名は31文字以上であれば登録できない' do
+      tag = build(:tag, name: 'a' * 31)
       tag.valid?
-      expect(tag.errors[:name]).to include('は15文字以内で入力してください')
+      expect(tag.errors[:name]).to include('は30文字以内で入力してください')
     end
   end
 end
@@ -34,7 +34,7 @@ end
 # Table name: tags
 #
 #  id         :bigint           not null, primary key
-#  name       :string(15)       not null
+#  name       :string(30)       not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
