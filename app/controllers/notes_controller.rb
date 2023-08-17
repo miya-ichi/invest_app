@@ -18,7 +18,6 @@ class NotesController < ApplicationController
 
   def edit
     @note = current_user.notes.find(params[:id])
-    @tags = @note.tags.pluck(:name)
   end
 
   def create
@@ -55,6 +54,6 @@ class NotesController < ApplicationController
   private
 
   def note_params
-    params.require(:note).permit(:title)
+    params.require(:note).permit(:title, :private)
   end
 end
