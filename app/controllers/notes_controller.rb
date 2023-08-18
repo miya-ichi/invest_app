@@ -2,14 +2,18 @@ class NotesController < ApplicationController
   def index
     if params[:tag]
       @tag = Tag.find_by(name: params[:tag])
-      @notes = @tag.notes.where(user_id: current_user.id)
+      @own_notes = @tag.notes.where(user_id: current_user.id)
+      @other_persons_notes = @tag.notes.where(private: false) - @own_notes
     else
-      @notes = current_user.notes
+      @own_notes = current_user.notes
+      @other_persons_notes = Note.where(private: false) - @own_notes
     end
   end
 
   def show
-    @note = current_user.notes.find(params[:id])
+    @note = Note.find(params[:id])
+    # ノートが非公開かつ自身のものでない場合は表示させない
+    redirect_to notes_url if @note.private && !current_user.own?(@note)
   end
 
   def new

@@ -25,6 +25,10 @@ class User < ApplicationRecord
     today_record = self.total_assets.find_or_create_by(date: Time.zone.today)
     today_record.update(price: total_asset) if today_record.price != total_asset
   end
+
+  def own?(object)
+    self.id == object.user_id
+  end
 end
 
 # == Schema Information
