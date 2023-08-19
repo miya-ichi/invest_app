@@ -5,7 +5,7 @@ class Note < ApplicationRecord
   has_many :tags, through: :notes_tags
 
   validates :title, presence: true, length: { maximum: 50 }
-  validates :private, presence: true
+  validates :private, inclusion: [true, false]
 
   def save_notes_tags(tags)
     current_tags = self.tags.pluck(:name)

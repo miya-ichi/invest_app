@@ -27,5 +27,5 @@ ja:
         category: 分類
       note:
         title: タイトル
-        private: プライベート
+        private: 非公開
         tags: タグ

@@ -3,9 +3,11 @@
     <div class="d-block" id="<%= note_block.index %>">
       <%= markdown(note_block.content) %>
     </div>
-    <div class="ms-auto">
-      <%= link_to '編集', edit_note_note_block_path(note_block), class: 'btn btn-primary' %>
-      <%= link_to '削除', note_note_block_path(@note, note_block), data: { turbo_method: :delete }, class: 'btn btn-danger' %>
-    </div>
+    <% if current_user.own?(@note) %>
+      <div class="ms-auto">
+        <%= link_to '編集', edit_note_note_block_path(note_block), class: 'btn btn-primary' %>
+        <%= link_to '削除', note_note_block_path(@note, note_block), data: { turbo_method: :delete }, class: 'btn btn-danger' %>
+      </div>
+    <% end %>
   </div>
 <% end %>

@@ -1,13 +1,30 @@
-<div class="col-md-8">
+<div class="col-md-9">
   <h1 class="text-center mb-5">研究ノート</h1>
   <%= link_to '＋ノートを作成', new_note_path, class: 'btn btn-primary mb-3' %>
-  <div class="card shadow-sm">
-    <% if @notes.blank? %>
-      <div class="card-body text-center">
-        まだノートがありません。ノートを作成ボタンから作成してみましょう！
+  <div class="row">
+    <div class="col-md-8">
+      自分が作成したノート
+      <div class="card shadow-sm">
+        <% if @own_notes.blank? %>
+          <div class="card-body text-center">
+            まだノートがありません。ノートを作成ボタンから作成してみましょう！
+          </div>
+        <% else %>
+          <%= render @own_notes %>
+        <% end %>
       </div>
-    <% else %>
-      <%= render @notes %>
-    <% end %>
+    </div>
+    <div class="col-md-4">
+      他のユーザーが作成したノート
+      <div class="card shadow-sm">
+        <% if @other_persons_notes.blank? %>
+          <div class="card-body text-center">
+            まだノートがありません。
+          </div>
+        <% else %>
+          <%= render partial: 'other_persons_note', collection: @other_persons_notes %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
