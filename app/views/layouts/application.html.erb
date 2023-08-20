@@ -13,11 +13,11 @@
   <body>
     <%= render 'shared/header' %>
 
-    <div class="container-fluid">
+    <div class="container-fluid main-content bg-light">
       <div id="flash">
         <%= render 'shared/flash_messages' %>
       </div>
-      <div class="row justify-content-center pt-5 pb-5 bg-light">
+      <div class="row justify-content-center pt-5 pb-5">
         <%= yield %>
       </div>
     </div>

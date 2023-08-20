@@ -17,7 +17,7 @@
     </div>
     <%= turbo_frame_tag @note do %>
       <div class="col d-flex">
-        <div class="note_title">
+        <div class="note-title">
           <%= @note.title %>
           <%= '(非公開)' if @note.private %>
         </div>
