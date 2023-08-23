@@ -1,6 +1,6 @@
 # 投資NOTE
 ## アプリのURL
-準備中
+[https://invest-app.onrender.com/](https://invest-app.onrender.com/)
 
 ## サービス概要
 自身の投資に関する情報をまとめておき、管理しやすくするためのツールです。  
