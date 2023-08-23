@@ -48,7 +48,7 @@ services:
           property: connectionString
 
   - type: cron
-    name: Invest_app_cron_stock_prices_update_us
+    name: Invest_app_cron_calculate_user_asset
     env: ruby
     plan: starter
     region: singapore
