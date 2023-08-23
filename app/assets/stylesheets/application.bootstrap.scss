@@ -2,9 +2,21 @@
 @import 'bootstrap-icons/font/bootstrap-icons';
 @import "tom-select/dist/css/tom-select.bootstrap5";
 
+header {
+  height: 62px;
+}
+
+footer {
+  height: 56px;
+}
+
 .header-myicon {
   height: calc(100% + 20px);
   margin: -10px 10px;
+}
+
+.main-content {
+  min-height: calc(100vh - 62px - 56px);
 }
 
 .hero {
@@ -13,17 +25,12 @@
   background-size: cover;
 }
 
-.footer-menu {
-  display: inline-block;
-  list-style: none;
-}
-
-.note_title {
+.note-title {
   color: black;
   font-size: 1.5rem;
 }
 
-.note_title_other {
+.note-title-other {
   color: black;
   font-size: 1.2rem;
 }
