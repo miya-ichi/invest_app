@@ -1,0 +1,31 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      possession: 保有銘柄
+      note: 研究ノート
+    attributes:
+      user:
+        id: ID
+        username: 名前
+        email: メールアドレス
+        admin: 管理者権限
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        avatar: プロフィール画像
+        created_at: 登録日時
+        updated_at: 更新日時
+      possession:
+        stock_id: 銘柄
+        id: ID
+        price: 購入価格
+        volume: 数量
+        memo: メモ
+      price:
+        market_close: 現在価格
+      stock:
+        category: 分類
+      note:
+        title: タイトル
+        private: 非公開
+        tags: タグ

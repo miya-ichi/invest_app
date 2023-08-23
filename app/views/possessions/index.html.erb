@@ -1,0 +1,40 @@
+<div class="row justify-content-center p-5 bg-light">
+  <div class="col">
+    <h1 class="text-center">保有銘柄一覧</h1>
+
+    <%= link_to '＋新規登録', new_possession_path, data: { turbo_frame: 'new_possession' }, class: 'btn btn-primary' %>
+
+    <div class="card shadow mt-3">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-1"><%= Stock.human_attribute_name(:category) %></div>
+          <div class="col-3"><%= Possession.human_attribute_name(:stock_id) %></div>
+          <div class="col-1"><%= Possession.human_attribute_name(:volume) %></div>
+          <div class="col-1"><%= Possession.human_attribute_name(:price) %></div>
+          <div class="col-2"><%= "#{Price.human_attribute_name(:market_close)}(前日比)" %></div>
+          <div class="col-2">評価額(騰落率)</div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <%= turbo_frame_tag 'new_possession' do %>
+          <% if @possessions.blank? %>
+            <div class="text-center">まだ登録されていません。新規登録ボタンから登録してみましょう!</div>
+          <% end %>
+        <% end %>
+        <div id="possessions">
+          <%= render @possessions %>
+        </div>
+        <div class="row p-2">
+          <div class="col d-flex justify-content-center align-items-center">
+            <% if current_user.total_assets.any? %>
+              <div class="h3">保有総額 <%= number_to_currency(current_user.total_assets.last.price) %></div>
+              <div class="h6 text-secondary ms-1">(<%= current_user.total_assets.last.date %> 22:00時点)</div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

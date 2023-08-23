@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>InvestApp</title>
+    <title>投資NOTE</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'shared/header' %>
+
+    <div class="container-fluid main-content bg-light">
+      <div id="flash">
+        <%= render 'shared/flash_messages' %>
+      </div>
+      <div class="row justify-content-center pt-5 pb-5">
+        <%= yield %>
+      </div>
+    </div>
+
+    <%= render 'shared/footer' %>
   </body>
 </html>

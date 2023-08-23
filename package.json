@@ -7,8 +7,11 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
+    "chart.js": "^4.2.1",
+    "chartkick": "^5.0.1",
     "esbuild": "^0.17.5",
-    "sass": "^1.58.0"
+    "sass": "^1.58.0",
+    "tom-select": "^2.2.2"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",

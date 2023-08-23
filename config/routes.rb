@@ -1,6 +1,21 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root to: 'static_pages#home'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+
+  get 'dashboard', to: 'dashboard#index'
+
+  resources :users, except: %i(index show edit)
+  resources :possessions, except: %i(show)
+  resources :notes do
+    resources :note_blocks, except: %i(index show)
+  end
+
+  namespace :mypage do
+    resource :account, only: %i(show edit update)
+  end
+
+  resources :stocks, only: %i(index)
 end

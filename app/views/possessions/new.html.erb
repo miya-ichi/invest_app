@@ -1,0 +1,26 @@
+<%= turbo_frame_tag 'new_possession' do %>
+  <%= bootstrap_form_with model: @possession do |f| %>
+    <div class="row">
+      <div class="form-group col-5">
+        <%= f.collection_select :stock_id, {}, :id, ->(stock) { "#{stock.code}:#{stock.name}" },
+                                { include_blank: '銘柄を検索(証券コード or ティッカー or 銘柄名)' },
+                                data: { controller: 'select-stocks', 'select-stocks_target': 'selectBox', url_value: stocks_path } %>
+      </div>
+      <div class="form-group col-2">
+        <%= f.number_field :price, min: 0, step: 0.1 %>
+      </div>
+      <div class="form-group col-2">
+        <%= f.number_field :volume, min: 1 %>
+      </div>
+    </div>
+    <div class="row pb-5 mb-3 border-bottom">
+      <div class="form-group col-9">
+        <%= f.text_field :memo, maxlength: 50, help: 'メモは50文字まで入力できます。' %>
+      </div>
+      <div class="col-3 d-flex justify-content-center align-items-start">
+        <%= f.submit class: 'btn btn btn-primary me-3' %>
+        <%= link_to 'キャンセル', possessions_path, class: 'btn btn btn-outline-secondary' %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

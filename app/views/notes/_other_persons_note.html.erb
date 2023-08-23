@@ -1,0 +1,26 @@
+<div class="row card-body border-bottom">
+  <div class="col">
+    <%= link_to other_persons_note.title, note_path(other_persons_note), class: 'note-title-other' %>
+  </div>
+  <div class="row">
+    <div class="col">
+      <% if other_persons_note.tags.any? %>
+        <ul class="notes_tags">
+          <% other_persons_note.tags.each do |tag| %>
+            <li class="me-3">
+              <%= link_to tag.name, notes_path(tag: tag.name), class: 'link-secondary' %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <span class="text-secondary">タグなし</span>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      作成日時:<%= other_persons_note.created_at.strftime('%Y/%m/%d %H:%M:%S') %><br>
+      更新日時:<%= other_persons_note.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>
+    </div>
+  </div>
+</div>
