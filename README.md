@@ -2,6 +2,10 @@
 ## アプリのURL
 [https://invest-app.onrender.com/](https://invest-app.onrender.com/)
 
+### テスト用ユーザー
+メールアドレス： test@example.com  
+パスワード：password
+
 ## サービス概要
 自身の投資に関する情報をまとめておき、管理しやすくするためのツールです。  
 
@@ -137,6 +141,7 @@ erDiagram
 ```
 
 ## 実装時のメモ
-Notionにて実装時のメモを書いていますのでリンクを記載します。個人用メモなので雑＆ざっくりな部分も多いです。
+Notionにて実装時のメモを書いていますのでリンクを記載します。  
+個人用メモなので雑＆ざっくりな部分も多いですがご容赦ください。
 
 https://sneaky-drug-f5e.notion.site/2-b04c7e02465844ce84dcbe02b65f0fc7?pvs=4
