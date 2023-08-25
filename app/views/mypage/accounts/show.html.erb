@@ -3,7 +3,9 @@
   <div class="card card-body">
     <p>ユーザー情報</p>
     <div class="ms-auto">
-      <%= link_to '編集', edit_mypage_account_path, class: 'btn btn-primary' %>
+      <%= link_to edit_mypage_account_path, class: 'btn btn-primary' do %>
+        <i class="bi bi-pencil"></i>
+      <% end %>
     </div>
     <table class="table table-hover">
       <tbody>

@@ -29,7 +29,10 @@
           </div>
         </div>
         <div class="card-body text-end">
-          <%= link_to '一覧へ', possessions_path, class: 'btn btn-primary' %>
+          <%= link_to possessions_path, class: 'btn btn-primary' do %>
+            <i class="bi bi-arrow-right-square"></i>
+            一覧へ
+          <% end %>
         </div>
       </div>
     </div>

@@ -3,8 +3,12 @@
   <div class="card card-body">
     <% if current_user.own?(@note) %>
       <div class="d-flex justify-content-end">
-        <%= link_to '編集', edit_note_path, data: { turbo_frame: dom_id(@note) }, class: 'btn btn-primary me-3' %>
-        <%= link_to '削除', @note, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+        <%= link_to edit_note_path, data: { turbo_frame: dom_id(@note) }, class: 'btn btn-primary me-3' do %>
+          <i class="bi bi-pencil"></i>
+        <% end %>
+        <%= link_to @note, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger' do %>
+          <i class="bi bi-trash"></i>
+        <% end %>
       </div>
     <% end %>
     <div class="my-3">
