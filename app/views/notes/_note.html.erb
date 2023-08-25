@@ -1,24 +1,12 @@
 <div class="row card-body border-bottom">
-  <div class="col d-flex">
+  <div class="col-12">
     <%= link_to note.title, note_path(note), class: 'note-title' %>
-    <div class="ms-auto">
-      作成日時:<%= note.created_at.strftime('%Y/%m/%d %H:%M:%S') %><br>
-      更新日時:<%= note.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>
-    </div>
   </div>
-  <div class="row">
-    <div class="col">
-      <% if note.tags.any? %>
-        <ul class="notes_tags">
-          <% note.tags.each do |tag| %>
-            <li class="me-3">
-              <%= link_to tag.name, notes_path(tag: tag.name), class: 'link-secondary' %>
-            </li>
-          <% end %>
-        </ul>
-      <% else %>
-        <span class="text-secondary">タグなし</span>
-      <% end %>
-    </div>
+  <div class="col-12">
+    <%= render partial: 'tags/tag', locals: { note: note } %>
+  </div>
+  <div class="col-12">
+    <span class="me-3">更新日時:<%= note.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></span>
+    作成日時:<%= note.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
   </div>
 </div>

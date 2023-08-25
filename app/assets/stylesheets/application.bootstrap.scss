@@ -35,12 +35,16 @@ footer {
   font-size: 1.2rem;
 }
 
-.notes_tags {
+.notes-tags {
   display: flex;
   list-style-type: none;
   padding: 0;
   margin: 0;
   color: black;
+}
+
+.notes-tags a {
+  color: white;
 }
 
 .flextextarea {

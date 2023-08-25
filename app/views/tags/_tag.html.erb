@@ -1,0 +1,9 @@
+<% if note.tags.any? %>
+  <ul class="notes-tags">
+    <% note.tags.each do |tag| %>
+      <li class="me-3">
+        <%= link_to tag.name, notes_path(tag: tag.name), class: 'badge bg-primary text-decoration-none' %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
