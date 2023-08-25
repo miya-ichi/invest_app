@@ -1,34 +1,36 @@
 <h1 class="text-center">ダッシュボード</h1>
 
-<div class="row">
-  <div class="col">
-    <div class="card m-5 shadow-sm">
-      <div class="card-body">
-        <div class="h4 text-center">資産総額の推移</div>
-      </div>
-      <div class="card-body p-5">
-        <%= column_chart @total_assets, xtitle: '日付', ytitle: '金額', suffix: '円', thousands: ',', round: 0 %>
-        <div class="text-secondary text-end">※22時に当日分を反映</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="card m-5 shadow-sm">
-      <div class="card-body">
-        <div class="h4 text-center">保有銘柄の内訳</div>
-      </div>
-      <div class="card-body px-5">
-        <%= pie_chart @possessions, suffix: '円', thousands: ',', round: 0 %>
-      </div>
-      <div class="card-body">
-        <div class="h6 text-center">
-          資産総額:
-          <%= number_to_currency(@possessions.sum { |n| n[1] }) %>
+<div class="col-md-10 my-5">
+  <div class="row">
+    <div class="col mb-5">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <div class="h4 text-center">資産総額の推移</div>
+        </div>
+        <div class="card-body">
+          <%= column_chart @total_assets, xtitle: '日付', ytitle: '金額', suffix: '円', thousands: ',', round: 0 %>
+          <div class="text-secondary text-end">※22時に当日分を反映</div>
         </div>
       </div>
-      <div class="card-body text-end">
-        <%= link_to '一覧へ', possessions_path, class: 'btn btn-primary' %>
+    </div>
+
+    <div class="col">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <div class="h4 text-center">保有銘柄の内訳</div>
+        </div>
+        <div class="card-body">
+          <%= pie_chart @possessions, suffix: '円', thousands: ',', round: 0 %>
+        </div>
+        <div class="card-body">
+          <div class="h6 text-center">
+            資産総額:
+            <%= number_to_currency(@possessions.sum { |n| n[1] }) %>
+          </div>
+        </div>
+        <div class="card-body text-end">
+          <%= link_to '一覧へ', possessions_path, class: 'btn btn-primary' %>
+        </div>
       </div>
     </div>
   </div>

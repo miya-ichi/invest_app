@@ -1,39 +1,38 @@
 <%= turbo_frame_tag possession do %>
   <div class="border-bottom">
     <div class="row align-items-center p-2">
-      <div class="col-1">
+      <div class="col-md-1">
         <%= possession.stock.japanese? ? '日本' : '米国' %>
       </div>
-      <div class="col-3">
+      <div class="col-md-3">
         <%= "(#{possession.stock.code})" %>
         <%= possession.stock.name %>
       </div>
-      <div class="col-1 d-flex justify-content-end">
+      <div class="col-md-1 d-flex justify-content-end">
         <%= number_with_delimiter(possession.volume) %>
       </div>
-      <div class="col-1 d-flex justify-content-end">
+      <div class="col-md-1 d-flex justify-content-end">
         <%= number_to_currency(possession.price, locale: possession.stock.japanese? ? :ja : :en) %>
       </div>
-      <div class="col-2 d-flex justify-content-end">
+      <div class="col-md-2 d-flex justify-content-end">
         <%= number_to_currency(possession.today_price, locale: possession.stock.japanese? ? :ja : :en) %>
         <div class="<%= possession.price_difference.positive? ? 'text-success' : 'text-danger' %>">
           <%= "(#{'+' if possession.price_difference.positive?}#{number_to_percentage(possession.price_difference, precision: 2)})" %>
         </div>
-        <%= possession.stock.prices.order(date: :desc).first.date %>
       </div>
-      <div class="col-2 d-flex justify-content-end">
+      <div class="col-md-2 d-flex justify-content-end">
         <%= number_to_currency(possession.total_price, locale: possession.stock.japanese? ? :ja : :en) %>
         <div class="<%= possession.total_change.positive? ? 'text-success' : 'text-danger' %>">
           <%= "(#{'+' if possession.total_change.positive?}#{number_to_percentage(possession.total_change, precision: 2)})" %>
         </div>
       </div>
-      <div class="col-2">
+      <div class="col-md-2">
         <%= link_to '編集', edit_possession_path(possession), class: 'btn btn-sm btn-primary me-3' %>
         <%= link_to '削除', possession, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-sm btn-danger' %>
       </div>
       <div class="row p-2">
-        <div class="col-1"></div>
-        <div class="col-9">メモ: <%= possession.memo %></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-9">メモ: <%= possession.memo %></div>
       </div>
     </div>
   </div>
