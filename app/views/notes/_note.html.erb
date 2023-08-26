@@ -1,12 +1,10 @@
-<div class="row card-body border-bottom">
-  <div class="col-12">
-    <%= link_to note.title, note_path(note), class: 'note-title' %>
-  </div>
-  <div class="col-12">
-    <%= render partial: 'tags/tag', locals: { note: note } %>
-  </div>
-  <div class="col-12">
-    <span class="me-3">更新日時:<%= note.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></span>
-    作成日時:<%= note.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+<div class="card-body border-bottom">
+  <%= link_to note.title, note_path(note), class: 'note-title' %>
+  <%= render partial: 'tags/tag', locals: { note: note } %>
+  <div class="text-secondary mt-1">
+    <span class="me-3">
+      <i class="bi bi-arrow-clockwise"></i> <%= note.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>
+    </span>
+    <i class="bi bi-pencil-square"></i> <%= note.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
   </div>
 </div>

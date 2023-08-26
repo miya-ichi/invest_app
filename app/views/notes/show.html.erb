@@ -11,6 +11,7 @@
         <% end %>
       </div>
     <% end %>
+
     <div class="my-3">
       <% if @note.user.avatar.attached? %>
         <%= image_tag @note.user.avatar, alt: 'プロフィール画像', class: 'rounded-circle', width: '50' %>
@@ -19,18 +20,19 @@
       <% end %>
       <%= @note.user.username %>
     </div>
+
     <%= turbo_frame_tag @note do %>
-      <div class="col d-flex">
-        <div class="note-title">
-          <%= @note.title %>
-          <%= '(非公開)' if @note.private %>
-        </div>
-        <div class="ms-auto">
-          作成日時:<%= @note.created_at.strftime('%Y/%m/%d %H:%M:%S') %><br>
-          更新日時:<%= @note.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>
-        </div>
+      <div class="note-title">
+        <%= @note.title %>
+        <%= '(非公開)' if @note.private %>
       </div>
       <%= render partial: 'tags/tag', locals: { note: @note } %>
+      <div class="text-secondary mt-1">
+        <span class="me-3">
+          <i class="bi bi-arrow-clockwise"></i> <%= @note.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>
+        </span>
+        <i class="bi bi-pencil-square"></i> <%= @note.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+      </div>
     <% end %>
 
     <hr>
