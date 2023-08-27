@@ -1,6 +1,9 @@
 <div class="col-md-9">
   <h1 class="text-center mb-5">研究ノート</h1>
-  <%= link_to '＋ノートを作成', new_note_path, class: 'btn btn-primary mb-3' %>
+  <%= link_to new_note_path, class: 'btn btn-primary mb-3' do %>
+    <i class="bi bi-plus"></i>
+    ノートを作成
+  <% end %>
   <div class="row">
     <div class="col-md-8">
       自分が作成したノート

@@ -3,7 +3,9 @@
   <div class="card card-body">
     <p>ユーザー情報</p>
     <div class="ms-auto">
-      <%= link_to '編集', edit_mypage_account_path, class: 'btn btn-primary' %>
+      <%= link_to edit_mypage_account_path, class: 'btn btn-primary' do %>
+        <i class="bi bi-pencil"></i>
+      <% end %>
     </div>
     <table class="table table-hover">
       <tbody>
@@ -13,7 +15,7 @@
             <% if @user.avatar.attached? %>
               <%= image_tag @user.avatar, alt: 'プロフィール画像', class: 'rounded-circle', width: '150' %>
             <% else %>
-              <%= image_tag 'https://placehold.jp/150x150.png', alt: 'プロフィール画像', class: 'rounded-circle' %>
+              <%= image_tag 'profile.png', alt: 'プロフィール画像', class: 'rounded-circle' %>
             <% end %>
           </td>
         </tr>

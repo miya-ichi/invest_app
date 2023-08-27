@@ -3,7 +3,7 @@
 @import "tom-select/dist/css/tom-select.bootstrap5";
 
 header {
-  height: 62px;
+  min-height: 62px;
 }
 
 footer {
@@ -35,12 +35,17 @@ footer {
   font-size: 1.2rem;
 }
 
-.notes_tags {
+.notes-tags {
   display: flex;
   list-style-type: none;
   padding: 0;
   margin: 0;
   color: black;
+}
+
+.notes-tags a {
+  color: white;
+  background-color: #000099;
 }
 
 .flextextarea {
