@@ -9,14 +9,16 @@
 
     <div class="card shadow mt-3">
       <div class="card-header">
-        <div class="row">
-          <div class="col-md-1"><%= Stock.human_attribute_name(:category) %></div>
-          <div class="col-md-3"><%= Possession.human_attribute_name(:stock_id) %></div>
-          <div class="col-md-1"><%= Possession.human_attribute_name(:volume) %></div>
-          <div class="col-md-1"><%= Possession.human_attribute_name(:price) %></div>
-          <div class="col-md-2"><%= "#{Price.human_attribute_name(:market_close)}(前日比)" %></div>
-          <div class="col-md-2">評価額(騰落率)</div>
-          <div class="col-md-2"></div>
+        <div class="row text-center">
+          <div class="col-md-10">
+            <div class="row">
+              <div class="col-md-4"><%= Possession.human_attribute_name(:stock_id) %></div>
+              <div class="col-md-1"><%= Possession.human_attribute_name(:price) %></div>
+              <div class="col-md-1"><%= Possession.human_attribute_name(:volume) %></div>
+              <div class="col-md-3"><%= "#{Price.human_attribute_name(:market_close)}(前日比)" %></div>
+              <div class="col-md-3">評価額(騰落率)</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -30,10 +32,10 @@
           <%= render @possessions %>
         </div>
         <div class="row p-2">
-          <div class="col d-flex justify-content-center align-items-center">
+          <div class="col text-center">
             <% if current_user.total_assets.any? %>
-              <div class="h3">保有総額 <%= number_to_currency(current_user.total_assets.last.price) %></div>
-              <div class="h6 text-secondary ms-1">(<%= current_user.total_assets.last.date %> 22:00時点)</div>
+              <span class="h3">保有総額 <%= number_to_currency(current_user.total_assets.last.price) %></span><br>
+              <span class="h6 text-secondary ms-1">(<%= current_user.total_assets.last.date %> 22:00時点)</span>
             <% end %>
           </div>
         </div>
