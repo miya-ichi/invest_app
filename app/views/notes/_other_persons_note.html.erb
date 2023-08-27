@@ -3,7 +3,7 @@
     <% if other_persons_note.user.avatar.attached? %>
       <%= image_tag other_persons_note.user.avatar, alt: 'プロフィール画像', class: 'rounded-circle', width: '40' %>
     <% else %>
-      <%= image_tag 'app/assets/profile.png', alt: 'プロフィール画像', class: 'rounded-circle', width: '40' %>
+      <%= image_tag 'profile.png', alt: 'プロフィール画像', class: 'rounded-circle', width: '40' %>
     <% end %>
     <%= other_persons_note.user.username %>
   </div>
