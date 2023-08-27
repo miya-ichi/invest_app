@@ -3,40 +3,36 @@
   <div class="card card-body">
     <% if current_user.own?(@note) %>
       <div class="d-flex justify-content-end">
-        <%= link_to '編集', edit_note_path, data: { turbo_frame: dom_id(@note) }, class: 'btn btn-primary me-3' %>
-        <%= link_to '削除', @note, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+        <%= link_to edit_note_path, data: { turbo_frame: dom_id(@note) }, class: 'btn btn-primary me-3' do %>
+          <i class="bi bi-pencil"></i>
+        <% end %>
+        <%= link_to @note, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger' do %>
+          <i class="bi bi-trash"></i>
+        <% end %>
       </div>
     <% end %>
+
     <div class="my-3">
       <% if @note.user.avatar.attached? %>
         <%= image_tag @note.user.avatar, alt: 'プロフィール画像', class: 'rounded-circle', width: '50' %>
       <% else %>
-        <%= image_tag 'https://placehold.jp/150x150.png', alt: 'プロフィール画像', class: 'rounded-circle', width: '50' %>
+        <%= image_tag 'profile.png', alt: 'プロフィール画像', class: 'rounded-circle', width: '50' %>
       <% end %>
       <%= @note.user.username %>
     </div>
+
     <%= turbo_frame_tag @note do %>
-      <div class="col d-flex">
-        <div class="note-title">
-          <%= @note.title %>
-          <%= '(非公開)' if @note.private %>
-        </div>
-        <div class="ms-auto">
-          作成日時:<%= @note.created_at.strftime('%Y/%m/%d %H:%M:%S') %><br>
-          更新日時:<%= @note.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>
-        </div>
+      <div class="note-title">
+        <%= @note.title %>
+        <%= '(非公開)' if @note.private %>
       </div>
-      <% if @note.tags.any? %>
-        <ul class="notes_tags">
-          <% @note.tags.each do |tag| %>
-            <li class="me-3">
-              <%= link_to tag.name, notes_path(tag: tag.name), class: 'link-secondary' %>
-            </li>
-          <% end %>
-        </ul>
-      <% else %>
-        <span class="text-secondary">タグなし</span>
-      <% end %>
+      <%= render partial: 'tags/tag', locals: { note: @note } %>
+      <div class="text-secondary mt-1">
+        <span class="me-3">
+          <i class="bi bi-arrow-clockwise"></i> <%= @note.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>
+        </span>
+        <i class="bi bi-pencil-square"></i> <%= @note.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+      </div>
     <% end %>
 
     <hr>

@@ -1,30 +1,33 @@
 <%= turbo_frame_tag @possession do %>
   <%= bootstrap_form_with model: @possession do |f| %>
-    <div class="row p-2">
-      <div class="col-1"><%= @possession.stock.japanese? ? '日本' : '米国' %></div>
-      <div class="col-3">
-        <%= @possession.stock.name %>
-      </div>
-      <div class="col-2">
-        <%= f.number_field :volume, min: 1, skip_label: true, label_as_placeholder: true, wrapper: false, control_class: 'form-control' %>
-      </div>
-      <div class="col-2">
-        <%= f.number_field :price, min: 0, step: 0.1, skip_label: true, label_as_placeholder: true, wrapper: false, control_class: 'form-control' %>
-      </div>
-      <div class="col-1"></div>
-      <div class="col-1"></div>
-      <div class="col-2">
-        <%= f.submit class: 'btn btn-sm btn-primary' %>
-      </div>
-    </div>
     <div class="row p-2 border-bottom">
-      <div class="col-1"></div>
-      <div class="col-9">
-        <%= f.text_field :memo, maxlength: 50, skip_label: true, label_as_placeholder: true, wrapper: false, control_class: 'form-control' %>
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-md-4">
+            <% if @possession.stock.japanese? %>
+              <span class="badge bg-primary">日本</span>
+            <% else %>
+              <span class="badge bg-danger">米国</span>
+            <% end %>
+            <%= "[#{@possession.stock.code}]" %>
+            <%= @possession.stock.name %>
+          </div>
+          <div class="col-md-2">
+            <%= f.number_field :price, min: 0, step: 0.1, control_class: 'form-control' %>
+          </div>
+          <div class="col-md-2">
+            <%= f.number_field :volume, min: 1, control_class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <%= f.text_field :memo, maxlength: 50, control_class: 'form-control' %>
+          </div>
+        </div>
       </div>
-      <div class="col-2">
+      <div class="col-md-2 py-3">
+        <%= f.submit class: 'btn btn-sm btn-primary me-3 mb-3' %><br>
         <%= link_to 'キャンセル', possessions_path, class: 'btn btn-sm btn-outline-secondary' %>
       </div>
-    </div>
   <% end %>
 <% end %>

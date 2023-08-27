@@ -2,11 +2,11 @@ class NotesController < ApplicationController
   def index
     if params[:tag]
       @tag = Tag.find_by(name: params[:tag])
-      @own_notes = @tag.notes.where(user_id: current_user.id)
-      @other_persons_notes = @tag.notes.where(private: false) - @own_notes
+      @own_notes = @tag.notes.where(user_id: current_user.id).order(updated_at: :desc)
+      @other_persons_notes = @tag.notes.where(private: false).order(updated_at: :desc) - @own_notes
     else
-      @own_notes = current_user.notes
-      @other_persons_notes = Note.where(private: false) - @own_notes
+      @own_notes = current_user.notes.order(updated_at: :desc)
+      @other_persons_notes = Note.where(private: false).order(updated_at: :desc) - @own_notes
     end
   end
 

@@ -4,7 +4,8 @@
     <p>あなたの投資活動をひとまとめに。</p>
     <p>資産形成を促進しましょう！</p>
   </div>
-  <div class="col-md-4">
+
+  <div class="col-md-3">
     <div class="card card-body shadow-sm py-3">
       <span>さっそく使ってみる</span>
       <%= link_to '新規登録', new_user_path, class: 'btn btn-success my-3' %>
@@ -13,16 +14,42 @@
     </div>
   </div>
 </div>
-<div class="row text-center justify-content-center bg-light p-3">
-  <div class="col-md-4">
-    <h1>使い方(後で詳細を作成)</h1>
-    <div>1.ユーザー登録</div>
-    <div>2.保有資産の登録</div>
-    <div>3.銘柄を研究する</div>
-    <div>4.資産状況を確認</div>
-    <div>
-      使ってみる
-      <%= link_to '新規登録', new_user_path, class: 'btn btn-success my-3' %>
+
+<div class="row d-flex justify-content-center bg-light py-5">
+  <h2 class="text-center mb-5">何ができるの？</h1>
+  <div class="col-md-8">
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center">
+        自身の保有銘柄を登録して、値動きを把握できます。
+      </div>
+      <div class="col-md-6 mb-5">
+        <%= link_to asset_url('possessions.png') do %>
+          <%= image_tag 'possessions.png', alt: '保有銘柄', class: 'img-fluid img-thumbnail', width: '600' %>
+        <% end %>
+      </div>
+
+      <div class="col-md-6  text-center">
+        銘柄に関する情報をまとめたノートを作成することができます。<br>
+        他のユーザーが公開したノートを閲覧することもできます。
+      </div>
+      <div class="col-md-6 mb-5">
+        <%= link_to asset_url('notes.png') do %>
+          <%= image_tag 'notes.png', alt: '研究ノート', class: 'img-fluid img-thumbnail', width: '600' %>
+        <% end %>
+      </div>
+
+      <div class="col-md-6 text-center">
+        ダッシュボードで資産の状況を一覧することができます。
+      </div>
+      <div class="col-md-6 mb-5">
+        <%= link_to asset_url('dashboard.png') do %>
+          <%= image_tag 'dashboard.png', alt: 'ダッシュボード', class: 'img-fluid img-thumbnail', width: '600' %>
+        <% end %>
+      </div>
     </div>
+  </div>
+  <div class="col-12 text-center mb-3">
+    使ってみる
+    <%= link_to '新規登録', new_user_path, class: 'btn btn-success my-3' %>
   </div>
 </div>

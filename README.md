@@ -27,10 +27,11 @@
 ### フロントエンド
 - Bootstrap5
 
-### 主なライブラリ(Gem)
+### 主なライブラリ
 - Sorery (ログイン機能)
 - Chartkick (グラフの表示)
 - Redcarpet（ノート入力にMarkdownを使用可能に）
+- Tom-Select(インクリメンタルサーチ)
 
 ## 機能紹介
 ()は現在未実装の機能
