@@ -16,7 +16,7 @@
       <% if @note.user.avatar.attached? %>
         <%= image_tag @note.user.avatar, alt: 'プロフィール画像', class: 'rounded-circle', width: '50' %>
       <% else %>
-        <%= image_tag 'https://placehold.jp/150x150.png', alt: 'プロフィール画像', class: 'rounded-circle', width: '50' %>
+        <%= image_tag 'profile.png', alt: 'プロフィール画像', class: 'rounded-circle', width: '50' %>
       <% end %>
       <%= @note.user.username %>
     </div>

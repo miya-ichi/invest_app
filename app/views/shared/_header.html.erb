@@ -21,7 +21,7 @@
               <% if current_user.avatar.attached? %>
                 <%= image_tag current_user.avatar, alt: 'プロフィール画像', class: 'rounded-circle', width: '50' %>
               <% else %>
-                <%= image_tag 'https://placehold.jp/150x150.png', alt: 'プロフィール画像', class: 'rounded-circle', width: '50' %>
+                <%= image_tag 'profile.png', alt: 'プロフィール画像', class: 'rounded-circle', width: '50' %>
               <% end %>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
