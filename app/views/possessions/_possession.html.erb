@@ -1,8 +1,8 @@
 <%= turbo_frame_tag possession do %>
   <div class="border-bottom">
     <div class="row align-items-center p-2">
-      <div class="col-10">
-        <div class="row mb-3">
+      <div class="col-md-10">
+        <div class="row mb-2">
           <div class="col-md-4">
             <% if possession.stock.japanese? %>
               <span class="badge bg-primary">日本</span>
@@ -31,7 +31,7 @@
             </span>
           </div>
         </div>
-        <div class="row p-2">
+        <div class="row">
           <div class="col"><i class="bi bi-chat-right-text"></i> <%= possession.memo %></div>
         </div>
       </div>
