@@ -1,5 +1,6 @@
 <div class="card-body border-bottom">
   <%= link_to note.title, note_path(note), class: 'note-title' %>
+  <span class="text-secondary"><%= note.private? ? '(非公開)' : '(公開)' %></span>
   <%= render partial: 'tags/tag', locals: { note: } %>
   <div class="text-secondary mt-1">
     <span class="me-3">
