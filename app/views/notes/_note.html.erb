@@ -1,6 +1,6 @@
 <div class="card-body border-bottom">
   <%= link_to note.title, note_path(note), class: 'note-title' %>
-  <%= render partial: 'tags/tag', locals: { note: note } %>
+  <%= render partial: 'tags/tag', locals: { note: } %>
   <div class="text-secondary mt-1">
     <span class="me-3">
       <i class="bi bi-arrow-clockwise"></i> <%= note.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>
