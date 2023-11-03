@@ -8,26 +8,32 @@ class Stock < ApplicationRecord
 
   def set_prices
     symbol = self.code
-    symbol += '.T' if self.category.zero? # 日本株の場合、証券コードの末尾に.Tをつける
-    query = BasicYahooFinance::Query.new
-    data = query.quotes(symbol)
+    symbol += '.T' if self.japanese? # 日本株の場合、証券コードの末尾に.Tをつける
+
+    uri = "https://query1.finance.yahoo.com/v8/finance/chart/#{symbol}?interval=1d"
+    client = HTTPClient.new
+    request = client.get(uri)
+    response = JSON.parse(request.body)['chart']['result'][0]['indicators']['quote'][0]
 
     prices.create(
       date: Time.zone.today,
-      market_open: data[symbol]['regularMarketOpen']['raw'],
-      daily_high: data[symbol]['regularMarketDayHigh']['raw'],
-      daily_low: data[symbol]['regularMarketDayLow']['raw'],
-      market_close: data[symbol]['regularMarketPrice']['raw']
+      market_open: response['open'][0],
+      daily_high: response['high'][0],
+      daily_low: response['low'][0],
+      market_close: response['close'][0]
     )
   end
 
   def update_prices
     symbol = self.code
-    symbol += '.T' if self.category.zero? # 日本株の場合、証券コードの末尾に.Tをつける
-    query = BasicYahooFinance::Query.new
-    data = query.quotes(symbol)
+    symbol += '.T' if self.japanese? # 日本株の場合、証券コードの末尾に.Tをつける
 
-    prices.last.update(market_close: data[symbol]['regularMarketPrice']['raw'])
+    uri = "https://query1.finance.yahoo.com/v8/finance/chart/#{symbol}?interval=1d"
+    client = HTTPClient.new
+    request = client.get(uri)
+    response = JSON.parse(request.body)['chart']['result'][0]['indicators']['quote'][0]
+
+    prices.last.update(market_close: response['close'][0])
   end
 
   def japanese?
